@@ -1,0 +1,1 @@
+"""XSSentinel scanner package."""

