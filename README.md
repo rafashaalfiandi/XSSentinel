@@ -10,7 +10,7 @@
 
 <h1>XSSentinel</h1>
 
-<p><strong>Scanner XSS untuk pengujian resmi dengan payload fuzzing, analisis refleksi, validasi browser, deteksi API evidence, CSP check, WAF hint, dan analisis DOM sink.</strong></p>
+<p><strong>An XSS scanner for authorized testing with payload fuzzing, reflection analysis, browser validation, API evidence detection, CSP checks, WAF hints, and DOM sink analysis.</strong></p>
 
 <p>
   <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white"></a>
@@ -20,28 +20,28 @@
 
 </div>
 
-## Ringkasan
+## Overview
 
-XSSentinel membantu menguji reflected XSS, risiko DOM XSS, dan endpoint API yang merefleksikan payload. Tool ini dibuat untuk pengujian keamanan yang legal, jelas, dan mudah diaudit dari output terminal.
+XSSentinel helps test reflected XSS, DOM XSS risk, and API endpoints that reflect payloads. It is designed for authorized security testing where the scan flow, evidence, and final classification must be easy to review from terminal output.
 
-Fitur utama:
+Main features:
 
-- Menguji parameter GET dan POST yang ditemukan dari target.
-- Mode default menguji satu parameter per request agar parameter rentan lebih mudah dilacak.
-- Mode opsional `--all-params` menguji semua query parameter sekaligus untuk satu endpoint.
-- Smart payload selection untuk mencoba payload prioritas terlebih dahulu.
-- Analisis konteks refleksi: HTML text, attribute, script, comment, raw/API response, dan konteks lain.
-- Validasi browser menggunakan Chromium atau Playwright jika tersedia.
-- Deteksi API evidence tanpa langsung menganggapnya valid sebelum ada bukti eksekusi browser.
-- Output URL lengkap berisi payload untuk temuan `[VALID]` dan `[API]` agar mudah diretest manual.
-- Deteksi CSP, sinyal WAF, JavaScript source, dan DOM sink.
-- Worker paralel untuk endpoint/parameter yang ditemukan.
+- Tests GET and POST parameters discovered from the target.
+- Default mode tests one parameter per request so the vulnerable parameter is easier to identify.
+- Optional `--all-params` mode tests all query parameters together for a specific endpoint.
+- Smart payload selection runs high-priority payloads first.
+- Reflection context analysis for HTML text, attributes, script blocks, comments, raw/API responses, and other contexts.
+- Browser validation with Chromium or Playwright when available.
+- API evidence detection without automatically marking reflected API responses as confirmed XSS.
+- Full payload URL output for `[VALID]` and `[API]` findings to make manual retesting easier.
+- CSP analysis, WAF-like hints, JavaScript source review, and DOM sink analysis.
+- Parallel workers for discovered endpoints and parameters.
 
-## Penggunaan Bertanggung Jawab
+## Responsible Use
 
-Gunakan XSSentinel hanya pada aplikasi yang kamu miliki atau yang kamu punya izin tertulis/eksplisit untuk diuji. Jangan menjalankan scan ke sistem pihak ketiga tanpa izin.
+Use XSSentinel only on applications you own or have explicit permission to test. Unauthorized scanning can disrupt systems and may violate laws, contracts, or acceptable-use policies.
 
-## Instalasi
+## Installation
 
 ```bash
 git clone https://github.com/rafashaalfiandi/XSSentinel.git
@@ -50,21 +50,21 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Setelah install, jalankan:
+After installation, verify the command:
 
 ```bash
 xssentinel -h
 ```
 
-Jika command `xssentinel` belum terbaca, tambahkan `~/.local/bin` ke `PATH`:
+If `xssentinel` is not found, add `~/.local/bin` to your `PATH`:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-Untuk permanen, masukkan baris tersebut ke file shell seperti `~/.bashrc` atau `~/.zshrc`.
+To make it permanent, add that line to your shell config, such as `~/.bashrc` or `~/.zshrc`.
 
-## Command Utama
+## Command Reference
 
 ```bash
 xssentinel <url>
@@ -76,146 +76,144 @@ xssentinel -restart
 xssentinel -h
 ```
 
-Penjelasan:
-
-| Command | Fungsi |
+| Command | Purpose |
 | --- | --- |
-| `xssentinel <url>` | Scan target langsung dari command line. |
-| `xssentinel` | Mode interaktif, tool akan meminta URL target. |
-| `xssentinel --all-params <url>` | Mengirim payload yang sama ke semua query parameter dalam satu request. |
-| `xssentinel --stop-on-confirmed <url>` | Berhenti total setelah temuan valid pertama. |
-| `xssentinel -update` | Mengambil versi terbaru XSSentinel dan memasang ulang runtime command. |
-| `xssentinel -restart` | Membersihkan cache lalu memasang ulang runtime dari source lokal yang tersimpan. Cocok setelah edit source lokal. |
-| `xssentinel -h` | Menampilkan bantuan command. |
+| `xssentinel <url>` | Scan a target directly from the command line. |
+| `xssentinel` | Start interactive mode and prompt for a target URL. |
+| `xssentinel --all-params <url>` | Send the same payload to every query parameter in one request. |
+| `xssentinel --stop-on-confirmed <url>` | Stop the entire scan after the first confirmed finding. |
+| `xssentinel -update` | Fetch the latest XSSentinel release state and reinstall the runtime command. |
+| `xssentinel -restart` | Clean local cache and reinstall the runtime from the saved local source. Useful after local source edits. |
+| `xssentinel -h` | Show built-in help. |
 
-Catatan penting:
+Important notes:
 
-- Pakai `xssentinel -update` untuk memperbarui tool ke versi terbaru.
-- Pakai `xssentinel -restart` setelah kamu mengedit file source lokal dan ingin command `xssentinel` memakai perubahan itu.
-- `-restart` tidak mengambil update dari remote; hanya refresh runtime lokal.
+- Use `xssentinel -update` when you want the latest available tool version installed.
+- Use `xssentinel -restart` after editing local source files and you want the installed `xssentinel` command to use those local changes.
+- `-restart` does not fetch remote updates; it refreshes the runtime from the saved local source path.
 
-## Contoh Penggunaan
+## Usage Examples
 
-Scan URL dengan satu parameter:
+Scan a URL with one query parameter:
 
 ```bash
 xssentinel "https://target.test/search?q=test"
 ```
 
-Scan URL dengan banyak parameter. Secara default, tiap parameter diuji satu per satu:
+Scan a URL with multiple parameters. By default, each parameter is tested separately:
 
 ```bash
-xssentinel "https://target.test/artikel/search?query=test&kata=test&kunci=test&menu=test&category=test"
+xssentinel "https://target.test/articles/search?query=test&keyword=test&key=test&menu=test&category=test"
 ```
 
-Scan semua query parameter sekaligus untuk endpoint yang sama:
+Scan all query parameters together for the same endpoint:
 
 ```bash
-xssentinel --all-params "https://target.test/artikel/search?query=test&kata=test&kunci=test&menu=test&category=test"
+xssentinel --all-params "https://target.test/articles/search?query=test&keyword=test&key=test&menu=test&category=test"
 ```
 
-Berhenti total setelah XSS valid pertama ditemukan:
+Stop the whole scan after the first confirmed XSS:
 
 ```bash
 xssentinel --stop-on-confirmed "https://target.test/search?q=test"
 ```
 
-Update tool:
+Update the installed tool:
 
 ```bash
 xssentinel -update
 ```
 
-Refresh runtime dari source lokal:
+Refresh the installed runtime from local source:
 
 ```bash
 xssentinel -restart
 ```
 
-## Mode Parameter
+## Parameter Modes
 
 ### Default: `single-param`
 
-Mode default menguji satu parameter per request. Contoh target:
+The default mode tests one parameter per request. Given this target:
 
 ```text
-https://target.test/search?query=test&kata=test&category=test
+https://target.test/search?query=test&keyword=test&category=test
 ```
 
-XSSentinel akan membuat request terpisah seperti:
+XSSentinel creates separate requests like:
 
 ```text
-https://target.test/search?query=PAYLOAD&kata=test&category=test
-https://target.test/search?query=test&kata=PAYLOAD&category=test
-https://target.test/search?query=test&kata=test&category=PAYLOAD
+https://target.test/search?query=PAYLOAD&keyword=test&category=test
+https://target.test/search?query=test&keyword=PAYLOAD&category=test
+https://target.test/search?query=test&keyword=test&category=PAYLOAD
 ```
 
-Kelebihan mode ini:
+This mode is usually the best default because:
 
-- Lebih akurat untuk mengetahui parameter mana yang rentan.
-- Lebih mudah dibuktikan dari URL hasil.
-- Mengurangi noise dari endpoint yang sensitif terhadap banyak input berubah sekaligus.
+- It identifies which parameter is responsible for the signal.
+- It gives cleaner evidence and cleaner payload URLs.
+- It reduces noise on endpoints that reject requests when many values change at once.
 
-### Opsional: `all-params`
+### Optional: `all-params`
 
-Mode ini aktif dengan `--all-params`. Semua query parameter diisi payload yang sama dalam satu request.
+Enable this mode with `--all-params`. All query parameters receive the same payload in one request.
 
-Contoh:
+Example:
 
 ```text
-https://target.test/search?query=PAYLOAD&kata=PAYLOAD&category=PAYLOAD
+https://target.test/search?query=PAYLOAD&keyword=PAYLOAD&category=PAYLOAD
 ```
 
-Gunakan mode ini saat:
+Use this mode when:
 
-- Endpoint hanya bereaksi jika beberapa parameter berubah bersamaan.
-- Ingin melihat apakah kombinasi parameter memicu sink tertentu.
-- Ingin coverage cepat pada endpoint tertentu.
+- The endpoint only reacts when multiple parameters change together.
+- You want to check whether a parameter combination reaches a sink.
+- You want quick coverage for a specific endpoint.
 
-Output awal scan akan menampilkan mode aktif, misalnya:
+At scan startup, XSSentinel prints the active mode:
 
 ```text
 [INFO] scan-mode=single-param (one parameter is fuzzed per request)
 [INFO] stop-policy=per-target-confirmed
 ```
 
-atau:
+or:
 
 ```text
 [INFO] scan-mode=all-params (all query parameters receive the same payload in each request)
 [INFO] stop-policy=per-target-confirmed
 ```
 
-## Cara XSSentinel Menentukan Hasil
+## Result Classification
 
-XSSentinel tidak langsung menganggap semua refleksi sebagai XSS valid. Hasil dinilai dari beberapa lapisan:
+XSSentinel does not treat every reflection as confirmed XSS. A result is classified from several evidence layers:
 
-- Apakah payload muncul kembali di response.
-- Di konteks apa payload muncul: HTML, attribute, script, raw/API, dan lainnya.
-- Apakah payload benar-benar mengeksekusi dialog di browser.
-- Apakah response berupa API/download yang hanya mengirim payload, tetapi belum tentu dieksekusi frontend.
+- Whether the payload appears in the response.
+- Where the payload appears: HTML text, attribute, script, raw/API response, or another context.
+- Whether the payload actually executes in a browser.
+- Whether the response is an API/download response that delivers payload content but does not directly execute it.
 
-Marker hasil:
+Result markers:
 
-| Marker | Status | Arti |
+| Marker | Status | Meaning |
 | --- | --- | --- |
-| `[VALID]` | `CONFIRMED` | Eksekusi sudah terkonfirmasi oleh browser/dialog evidence. |
-| `[API]` | `API_REFLECTED` atau `API_RISK` | API/JSON/download response merefleksikan payload. Perlu konfirmasi frontend/browser sink sebelum disebut valid. |
-| `[RISK]` | `REFLECTED_RISK` | Refleksi kuat dan berisiko tinggi, tetapi belum terbukti eksekusi. |
-| `[LOW]` | `REFLECTED_LOW` | Ada refleksi, tetapi konteksnya lebih lemah. |
-| `[NO]` | `NOT_CONFIRMED` | Tidak ada bukti refleksi/eksekusi yang cukup. |
-| `[SKIP]` | `NETWORK_ERROR` atau `HTTP_SKIPPED` | Target gagal dijangkau atau status tertentu dilewati setelah threshold. |
+| `[VALID]` | `CONFIRMED` | Browser/dialog execution was confirmed. |
+| `[API]` | `API_REFLECTED` or `API_RISK` | An API, JSON, or download response reflects the payload. Frontend or browser sink confirmation is still required before calling it confirmed XSS. |
+| `[RISK]` | `REFLECTED_RISK` | Strong reflection with high XSS likelihood, but no confirmed execution yet. |
+| `[LOW]` | `REFLECTED_LOW` | Reflection exists, but the context is weaker. |
+| `[NO]` | `NOT_CONFIRMED` | No useful reflection or execution evidence was found. |
+| `[SKIP]` | `NETWORK_ERROR` or `HTTP_SKIPPED` | The target was unreachable or an HTTP skip threshold was reached. |
 
-Prinsip akurasi:
+Accuracy rules:
 
-- `[VALID]` hanya untuk bukti eksekusi yang terkonfirmasi.
-- Response API yang hanya memantulkan payload tidak otomatis dianggap valid.
-- `[API]` tetap penting karena sering menjadi sumber XSS saat data API dimasukkan lagi ke frontend tanpa encoding.
-- Kalau `[API]` muncul, XSSentinel menampilkan URL lengkap dengan payload agar bisa diuji ulang manual di browser, proxy, atau frontend sink.
+- `[VALID]` is reserved for confirmed execution evidence.
+- API responses that only reflect the payload are not automatically marked valid.
+- `[API]` is still important because API data can become XSS when a frontend renders it unsafely.
+- When `[API]` appears, XSSentinel prints the full URL with the payload so it can be retested in a browser, proxy, or frontend sink.
 
-## Output Penting
+## Important Output
 
-Contoh hasil `[API]`:
+Example `[API]` result:
 
 ```text
 [API  ] #0008 agent=01/01 GET HTTP=200 API_REFLECTED API response reflects payload; browser confirmation required eviden...
@@ -223,7 +221,7 @@ Contoh hasil `[API]`:
   payload: <svg onload=alert(1)>
 ```
 
-Contoh ringkasan ketika belum ada eksekusi valid:
+Example summary when no execution is confirmed:
 
 ```text
 [DONE] no confirmed execution
@@ -234,7 +232,7 @@ Contoh ringkasan ketika belum ada eksekusi valid:
   url: https://target.test/api/search?q=%3Csvg%20onload%3Dalert%281%29%3E
 ```
 
-Contoh hasil valid:
+Example confirmed finding:
 
 ```text
 [VALID] #0001 GET HTTP=200 CONFIRMED payload="\"><svg/onload=prompt(1)>" evidence="prompt:1"
@@ -249,28 +247,28 @@ Contoh hasil valid:
 
 ## Scan Flow
 
-1. Target dinormalisasi dan divalidasi harus `http://` atau `https://`.
-2. Query parameter dari URL dibuat menjadi fuzz target.
-3. Jika URL awal tidak punya parameter, XSSentinel mencoba discovery dari form, link, input, dan JavaScript same-origin.
-4. Payload dimuat dari file payload utama.
-5. Smart mode memilih payload prioritas dulu.
-6. Tool melakukan context probing untuk memahami posisi refleksi.
-7. Request payload dikirim ke target.
-8. Response dianalisis untuk refleksi, API evidence, download evidence, dan konteks DOM.
-9. Jika browser tersedia, payload yang layak akan diverifikasi dengan Chromium/Playwright.
-10. Jika tidak ada valid di batch awal, scanner lanjut ke fallback payload yang lebih luas.
+1. Normalize the target and verify that it uses `http://` or `https://`.
+2. Convert query parameters from the URL into fuzz targets.
+3. If the initial URL has no query parameters, discover inputs from forms, links, standalone fields, and same-origin JavaScript.
+4. Load payloads from the main payload file.
+5. Use smart mode to run prioritized payloads first.
+6. Run context probes to understand reflection placement.
+7. Send payload requests to the target.
+8. Analyze the response for reflection, API evidence, download evidence, and DOM context.
+9. If browser support is available, verify suitable payloads with Chromium or Playwright.
+10. If no confirmed result appears in the first smart batch, continue with broader fallback payloads.
 
-## Discovery Target
+## Target Discovery
 
-Jika target awal tidak punya query parameter, XSSentinel mencoba menemukan input dari halaman:
+If the starting URL has no query parameters, XSSentinel tries to find inputs from the page:
 
-- GET form.
-- POST form.
-- Link same-origin dengan query string.
-- Standalone input field.
-- Nama parameter dari JavaScript same-origin.
+- GET forms.
+- POST forms.
+- Same-origin links with query strings.
+- Standalone input fields.
+- Parameter names inferred from same-origin JavaScript.
 
-Saat banyak endpoint ditemukan, scanner memakai worker pool. Output seperti ini berarti worker sedang bekerja:
+When multiple endpoints are discovered, the scanner uses a worker pool. Worker output looks like this:
 
 ```text
 [START] workers=4 targets=12 parallel=on
@@ -280,138 +278,138 @@ Saat banyak endpoint ditemukan, scanner memakai worker pool. Output seperti ini 
 
 ## API Testing
 
-XSS di API biasanya tidak selalu langsung muncul popup, karena API hanya mengembalikan data. XSS baru valid kalau data API itu masuk ke frontend dan dieksekusi di sink berbahaya seperti `innerHTML`, `document.write`, template HTML tanpa escaping, atau render SVG/HTML aktif.
+XSS in APIs does not always trigger a popup directly because an API usually returns data instead of rendering HTML. The issue becomes confirmed XSS only when that API data reaches a frontend sink and executes, such as `innerHTML`, `document.write`, an unsafe HTML template, or active SVG/HTML rendering.
 
-Untuk API, hasil yang bagus dibaca seperti ini:
+Read API results this way:
 
-- `[API]` berarti payload sampai dan terefleksi di API.
-- URL lengkap yang dicetak bisa dipakai untuk retest manual.
-- Cek frontend mana yang memakai API tersebut.
-- Jika frontend memasukkan response API ke HTML tanpa encoding dan payload berjalan, barulah itu valid XSS.
+- `[API]` means the payload reached and was reflected by the API.
+- The printed full URL can be used for manual retesting.
+- Check which frontend page consumes that API.
+- If the frontend inserts the API response into HTML without safe encoding and the payload executes, then it is confirmed XSS.
 
-Contoh endpoint API:
+Example API endpoint:
 
 ```bash
 xssentinel "https://target.test/api/search?q=test"
 ```
 
-Jika menemukan `[API]`, lanjutkan verifikasi manual:
+When `[API]` appears, continue manual validation:
 
-- Buka URL hasil yang dicetak.
-- Cek response body dan content type.
-- Cari halaman frontend yang menggunakan endpoint itu.
-- Uji apakah response API masuk ke DOM sebagai HTML aktif atau hanya sebagai text aman.
+- Open the printed payload URL.
+- Check the response body and content type.
+- Find the frontend page that consumes the endpoint.
+- Confirm whether the response is inserted into the DOM as active HTML or only displayed as safe text.
 
 ## Browser Validation
 
-XSSentinel memakai Chromium lokal atau Playwright jika tersedia. Browser validation mencoba membuka URL payload dan mendeteksi `alert`, `confirm`, atau `prompt`.
+XSSentinel uses local Chromium or Playwright when available. Browser validation opens the payload URL and watches for `alert`, `confirm`, or `prompt` execution.
 
-Install Chromium di Debian/Ubuntu:
+Install Chromium on Debian/Ubuntu-based systems:
 
 ```bash
 sudo apt install chromium
 ```
 
-Alternatif Playwright:
+Or install Playwright:
 
 ```bash
 python3 -m pip install playwright
 python3 -m playwright install chromium
 ```
 
-Jika browser tidak tersedia, scanner tetap berjalan, tetapi hasil validasi akan terbatas pada HTTP/reflection/API evidence. Dalam kondisi ini, `[VALID]` bisa lebih jarang muncul karena tidak ada bukti eksekusi browser.
+If browser support is missing, the scanner still runs, but validation is limited to HTTP, reflection, and API evidence. In that mode, `[VALID]` findings may be less frequent because browser execution cannot be confirmed.
 
 ## HTTP Skip Behavior
 
-XSSentinel hanya menganggap status berikut sebagai kandidat skip otomatis:
+Only these statuses are treated as automatic skip candidates:
 
 - `204 No Content`
 - `304 Not Modified`
 
-Tool tidak langsung skip pada satu response. Skip baru terjadi setelah status kandidat yang sama muncul berulang kali tanpa refleksi.
+XSSentinel does not skip on a single response. A skip happens only after the same candidate status appears repeatedly without reflection.
 
-Status seperti `400`, `401`, `403`, `404`, `405`, `406`, `410`, `413`, `415`, `429`, dan `5xx` tetap dianalisis normal. Jika payload terefleksi, hasil tetap bisa menjadi `[LOW]`, `[RISK]`, `[API]`, atau `[VALID]` sesuai evidence.
+Statuses such as `400`, `401`, `403`, `404`, `405`, `406`, `410`, `413`, `415`, `429`, and `5xx` are still analyzed normally. If the payload is reflected, the result can still become `[LOW]`, `[RISK]`, `[API]`, or `[VALID]` depending on evidence.
 
-## File Payload
+## Payload Files
 
-File utama payload:
+Main payload file:
 
 ```text
 xss-payloads.txt
 ```
 
-File pendukung/eksperimen:
+Supporting/experimental payload file:
 
 ```text
 smart-selected-180-payloads.txt
 ```
 
-Catatan:
+Notes:
 
-- Baris kosong dan komentar diabaikan.
-- Smart mode melakukan perluasan payload seperti variasi encoding, escaping, dan mutasi sintaks.
-- `selected=90` di output berarti 90 payload prioritas diuji dulu, bukan berarti total payload hanya 90.
+- Empty lines and comments are ignored.
+- Smart mode expands payloads with encoding, escaping, and syntax mutations.
+- `selected=90` in the startup output means 90 high-priority payloads are tested first. It does not mean the total payload count is only 90.
 
 ## Troubleshooting
 
 ### `xssentinel: command not found`
 
-Tambahkan `~/.local/bin` ke `PATH`:
+Add `~/.local/bin` to your `PATH`:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-Lalu cek:
+Then check:
 
 ```bash
 xssentinel -h
 ```
 
-### Sudah edit source tapi command belum berubah
+### Local source was edited but the command did not change
 
-Jalankan:
+Run:
 
 ```bash
 xssentinel -restart
 ```
 
-Ini memasang ulang runtime dari source lokal yang tersimpan.
+This reinstalls the runtime from the saved local source path.
 
-### Ingin memperbarui tool
+### Update the installed tool
 
-Jalankan:
+Run:
 
 ```bash
 xssentinel -update
 ```
 
-Command ini mengambil versi terbaru dan memasang ulang runtime XSSentinel.
+This fetches the latest available tool state and reinstalls the XSSentinel runtime.
 
-### `[API]` muncul tapi tidak ada popup
+### `[API]` appears but there is no popup
 
-Itu normal. `[API]` berarti payload terefleksi di response API/download, bukan bukti eksekusi browser. Gunakan URL yang dicetak untuk mencari frontend sink yang memakai response API tersebut.
+That is expected. `[API]` means the payload was reflected by an API or download response, not that browser execution was confirmed. Use the printed URL to find and test the frontend sink that consumes that response.
 
-### Banyak `[RISK]` atau `[LOW]`, tapi tidak ada `[VALID]`
+### Many `[RISK]` or `[LOW]` results appear, but no `[VALID]`
 
-Artinya payload terefleksi, tetapi belum ada bukti eksekusi. Kemungkinan penyebab:
+The payload was reflected, but execution was not confirmed. Common reasons:
 
-- Browser validation tidak tersedia.
-- Payload masuk sebagai text aman, bukan HTML aktif.
-- CSP atau sanitasi frontend mencegah eksekusi.
-- Endpoint hanya API dan tidak langsung render HTML.
+- Browser validation is unavailable.
+- The payload is rendered as safe text, not active HTML.
+- CSP or frontend sanitization blocks execution.
+- The endpoint is an API and does not directly render HTML.
 
-### Browser validation tidak aktif
+### Browser validation is disabled
 
-Cek output `chromium=on/off`. Jika `off`, install Chromium atau Playwright seperti bagian Browser Validation.
+Check the startup output for `chromium=on` or `chromium=off`. If it is `off`, install Chromium or Playwright as shown in the Browser Validation section.
 
-### Target sering error `500` atau response aneh
+### The target often returns `500` or unusual responses
 
-Coba mode default tanpa `--all-params`, karena satu parameter per request biasanya lebih stabil. Gunakan `--all-params` hanya jika endpoint memang butuh beberapa parameter berubah bersamaan.
+Try the default mode without `--all-params`. One parameter per request is usually more stable. Use `--all-params` only when the endpoint needs multiple parameters to change together.
 
-### Scan terasa lama
+### The scan feels slow
 
-Hal ini bisa terjadi jika banyak endpoint ditemukan atau payload fallback sudah berjalan. Perhatikan output worker seperti `active`, `done`, dan `phases` untuk melihat progress.
+This can happen when many endpoints are discovered or when fallback payloads are running. Watch worker output such as `active`, `done`, and `phases` to understand progress.
 
 ## Project Layout
 
@@ -426,13 +424,13 @@ Hal ini bisa terjadi jika banyak endpoint ditemukan atau payload fallback sudah 
 `-- xssentinel_core/
 ```
 
-Installer menyalin runtime ke:
+The installer copies the runtime to:
 
 ```text
 ~/.local/share/xssentinel
 ```
 
-Wrapper command dibuat di:
+The wrapper command is created at:
 
 ```text
 ~/.local/bin/xssentinel
@@ -446,4 +444,4 @@ Wrapper command dibuat di:
 
 ## License
 
-XSSentinel dirilis dengan lisensi Apache License 2.0. Lihat [LICENSE](LICENSE) untuk teks lisensi lengkap.
+XSSentinel is released under the Apache License 2.0. See [LICENSE](LICENSE) for the full license text.
