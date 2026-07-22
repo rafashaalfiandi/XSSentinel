@@ -30,6 +30,7 @@ What it does during a scan:
 - Discovers GET links, GET forms, POST forms, standalone inputs, and parameter names from same-origin JavaScript.
 - Expands and prioritizes XSS payloads in smart mode.
 - Detects reflection context such as HTML text, attribute, script block, comment, or raw response.
+- Detects API/download responses that return an active XSS payload as a file or standalone document.
 - Reviews CSP posture, WAF-like signals, JavaScript sources, and DOM sinks.
 - Optionally confirms execution in Chromium or Playwright by watching JavaScript dialogs.
 - Runs discovered parameters in parallel while keeping each parameter's context, request flow, and skip threshold separate.
@@ -62,6 +63,24 @@ If `xssentinel` is not found after installation, add `~/.local/bin` to your shel
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
+
+## Command Reference
+
+```bash
+xssentinel <url>
+xssentinel
+xssentinel -update
+xssentinel -restart
+xssentinel -h
+```
+
+- `xssentinel <url>` scans a target directly.
+- `xssentinel` opens the interactive prompt.
+- `xssentinel -update` rebuilds the installed runtime from the current source tree and clears local caches.
+- `xssentinel -restart` is the same as `-update`.
+- `xssentinel -h` shows the built-in help.
+
+If you edit source files in `/home/rafasa/Documents/XSSentinel`, run `xssentinel -update` afterward so the installed command uses the latest code.
 
 ## Requirements
 
@@ -100,6 +119,24 @@ When the starting URL has no query parameter, XSSentinel requests the page and a
 
 POST scanning is created automatically when a POST form is discovered. The current command-line entrypoint accepts a target URL; discovered forms and links are handled by the scanner flow.
 
+## How Results Are Decided
+
+The scanner assigns a result based on three layers:
+
+- HTTP and reflection analysis.
+- Browser confirmation when a dialog-capable payload is supported.
+- API/download evidence when the response body or downloaded file contains an active XSS payload.
+
+The most important markers are:
+
+- `VALID`: confirmed execution or confirmed active payload in a download/API response.
+- `RISK`: strong reflection with high XSS likelihood.
+- `LOW`: reflection exists, but it is weaker.
+- `NO`: no useful reflection or confirmation.
+- `SKIP`: target unreachable or allowed HTTP skip threshold reached.
+
+For API or proxy endpoints, a response can still be `VALID` even when it comes back as a file download instead of visible HTML.
+
 ## Scan Flow
 
 1. Normalize the target and confirm it uses `http://` or `https://`.
@@ -109,8 +146,9 @@ POST scanning is created automatically when a POST form is discovered. The curre
 5. Probe the target to infer reflection context.
 6. Analyze target intelligence: CSP, WAF-like signals, scripts, DOM sources, and DOM sinks.
 7. Send payload requests and inspect response reflection.
-8. Confirm suitable reflected payloads in a browser when Chromium or Playwright is available.
-9. Continue from the first smart batch into exhaustive fallback when no browser-confirmed result is found.
+8. Detect API/download responses where the returned file or response body contains the active XSS payload.
+9. Confirm suitable reflected payloads in a browser when Chromium or Playwright is available.
+10. Continue from the first smart batch into exhaustive fallback when no confirmed result is found.
 
 ## Reading The Log
 
@@ -120,7 +158,7 @@ XSSentinel uses compact markers so scan output can be reviewed quickly. The term
 
 | Marker | Meaning | What to do |
 | --- | --- | --- |
-| <img alt="VALID" src="https://img.shields.io/badge/VALID-confirmed-2ea44f?style=flat-square"> | Browser-confirmed JavaScript execution. | Treat as confirmed XSS and review the payload, URL, and browser evidence. |
+| <img alt="VALID" src="https://img.shields.io/badge/VALID-confirmed-2ea44f?style=flat-square"> | Browser-confirmed execution, or an API/download response returned an active XSS payload as file content. | Treat as confirmed XSS and review the payload, URL, and evidence. |
 | <img alt="RISK" src="https://img.shields.io/badge/RISK-reflected%20risk-d29922?style=flat-square"> | Strong reflection with high XSS risk. | Review manually or rerun with browser validation enabled. |
 | <img alt="LOW" src="https://img.shields.io/badge/LOW-reflected%20signal-6f42c1?style=flat-square"> | Reflection exists, but the context is weaker. | Useful for manual follow-up and payload tuning. |
 | <img alt="NO" src="https://img.shields.io/badge/NO-not%20confirmed-6a737d?style=flat-square"> | No useful reflection or confirmation. | Usually informational. |
@@ -177,6 +215,47 @@ All other HTTP status codes continue through normal scanning. This includes `400
 
 If a response reflects the payload, it remains eligible for `REFLECTED_LOW`, `REFLECTED_RISK`, and browser validation even when its status is `204` or `304`.
 
+## API And Download Detection
+
+Some targets expose API routes that return generated files instead of rendering HTML directly. For example:
+
+```text
+https://target.test/api/web-proxy?url=FUZZ
+```
+
+A common high-signal API test value is a data URI that decodes to HTML:
+
+```text
+data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
+```
+
+That value decodes to:
+
+```html
+<script>alert(1)</script>
+```
+
+If the response is downloaded as a file and the file content contains an active XSS payload, XSSentinel marks it as `[VALID]`. This is useful for endpoints that save or proxy attacker-controlled HTML, SVG, JavaScript, or similar active content.
+
+XSSentinel treats a response as valid download/API evidence when the payload is active and one of these signals is present:
+
+- `Content-Disposition` indicates a downloaded file or filename.
+- `Content-Type` is active content such as HTML, XHTML, SVG, or JavaScript.
+- The endpoint looks like an API/download/proxy route and the response body is the active payload document.
+- The response body itself is a standalone active payload, such as `<script>alert(1)</script>`.
+- Data URI payloads are compared against their decoded content, so base64 HTML can still be recognized.
+
+This signal is separate from browser confirmation. Browser-confirmed results and valid download/API results both use the `[VALID]` marker.
+
+## Troubleshooting
+
+- If you keep seeing HTTP `500`, the current parameter set may be too aggressive for that endpoint. The scanner now fuzzes one query parameter at a time for direct GET targets, but some APIs still reject certain payload shapes.
+- If a target looks vulnerable but no `VALID` appears, check whether the response is a file download. The scanner will mark that as `VALID` only when the returned body or downloaded file contains an active payload it can recognize.
+- If browser confirmation never happens, the target may not trigger a dialog-capable payload, or Chromium/Playwright may be unavailable.
+- If you only get `LOW` or `RISK`, the scanner saw reflection but not enough evidence to promote it to confirmed execution.
+- If you want to refresh the installed copy after edits, use `xssentinel -update`.
+- If the tool is not found after install, ensure `~/.local/bin` is in `PATH`.
+
 ## Example Output
 
 Startup and discovery:
@@ -217,9 +296,10 @@ Result stream:
 
 ```text
 [VALID] #0001 GET HTTP=200 CONFIRMED payload="\"><svg/onload=prompt(1)>" evidence="prompt:1"
-[RISK ] #0002 GET HTTP=200 REFLECTED_RISK DOM=attribute:reflected in attribute value
-[LOW  ] #0003 GET HTTP=200 REFLECTED_LOW DOM=text:reflected in HTML text
-[NO   ] #0004 GET HTTP=200 NOT_CONFIRMED DOM=no-reflection
+[VALID] #0002 GET HTTP=200 DOWNLOAD_CONFIRMED payload="<script>alert(1)</script>" evidence="response body is an active XSS payload document"
+[RISK ] #0003 GET HTTP=200 REFLECTED_RISK DOM=attribute:reflected in attribute value
+[LOW  ] #0004 GET HTTP=200 REFLECTED_LOW DOM=text:reflected in HTML text
+[NO   ] #0005 GET HTTP=200 NOT_CONFIRMED DOM=no-reflection
 [SKIP ] target skipped: connection timed out
 ```
 
@@ -288,6 +368,12 @@ Keep these files together when running from source. The installer copies the req
 ```bash
 ./uninstall.sh
 ```
+
+## License
+
+XSSentinel is released under the Apache License 2.0. This is a widely used open-source license that allows use, modification, and distribution while also providing an explicit patent grant and clear attribution requirements.
+
+See [LICENSE](LICENSE) for the full license text.
 
 ## Responsible Use
 
