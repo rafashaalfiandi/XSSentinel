@@ -1,12 +1,8 @@
 <div align="center">
 
-<pre>
- __  __ ____ ____             _   _            _
- \ \/ // ___/ ___|  ___ _ __ | |_(_)_ __   ___| |
-  \  / \___ \___ \ / _ \ '_ \| __| | '_ \ / _ \ |
-  /  \  ___) |__) |  __/ | | | |_| | | | |  __/ |
- /_/\_\|____/____/ \___|_| |_|\__|_|_| |_|\___|_|
-</pre>
+<img src="xssentinel_core/manifest/assets/thumbanail.png" alt="XSSentinel" width="720">
+
+<video src="xssentinel_core/manifest/assets/vd.mp4" width="720" autoplay muted loop playsinline preload="auto" style="pointer-events: none;"></video>
 
 <h1>XSSentinel</h1>
 
