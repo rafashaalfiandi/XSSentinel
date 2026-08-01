@@ -2,7 +2,7 @@
 
 <img src="xssentinel_core/manifest/assets/thumbanail.png" alt="XSSentinel" width="720">
 
-<video src="xssentinel_core/manifest/assets/vd.mp4" width="720" autoplay muted loop playsinline preload="auto" style="pointer-events: none;"></video>
+<video src="xssentinel_core/manifest/assets/vd.mp4" width="720" autoplay muted loop playsinline preload="auto" controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture disableremoteplayback style="pointer-events: none;"></video>
 
 <h1>XSSentinel</h1>
 
