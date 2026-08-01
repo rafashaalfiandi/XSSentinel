@@ -1,37 +1,49 @@
 <div align="center">
 
-<img src="xssentinel_core/manifest/assets/thumbanail.png" alt="XSSentinel" width="720">
+<img src="xssentinel_core/manifest/assets/thumbanail.png" alt="XSSentinel" width="760">
 
-<img src="xssentinel_core/manifest/assets/vd.gif" alt="XSSentinel demo" width="720">
+<br><br>
 
 <h1>XSSentinel</h1>
 
-<p><strong>An XSS scanner for authorized testing with payload fuzzing, reflection analysis, browser validation, API evidence detection, CSP checks, WAF hints, and DOM sink analysis.</strong></p>
+<p>
+  <strong>Authorized XSS testing with payload fuzzing, reflection analysis, browser validation, API evidence detection, CSP checks, WAF hints, and DOM sink review.</strong>
+</p>
 
 <p>
-  <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white"></a>
-  <img alt="Platform" src="https://img.shields.io/badge/Platform-Linux-555555?style=flat-square">
-  <img alt="Use" src="https://img.shields.io/badge/Use-Authorized%20Testing%20Only-d46a6a?style=flat-square">
+  <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
+  <img alt="Platform" src="https://img.shields.io/badge/Platform-Linux-555555?style=for-the-badge">
+  <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-2f7d32?style=for-the-badge">
+  <img alt="Use" src="https://img.shields.io/badge/Use-Authorized%20Testing%20Only-d46a6a?style=for-the-badge">
 </p>
+
+</div>
+
+## Demo
+
+<div align="center">
+
+<img src="xssentinel_core/manifest/assets/vd.gif" alt="XSSentinel demo" width="760">
 
 </div>
 
 ## Overview
 
-XSSentinel helps test reflected XSS, DOM XSS risk, and API endpoints that reflect payloads. It is designed for authorized security testing where the scan flow, evidence, and final classification must be easy to review from terminal output.
+XSSentinel is a command-line scanner for reflected XSS, DOM XSS risk, and API endpoints that reflect payloads. It is built for authorized security testing where the scan flow, evidence, and final classification need to be easy to review from terminal output.
 
-Main features:
+It focuses on practical evidence instead of treating every reflection as a confirmed vulnerability. Browser execution, response context, API behavior, CSP hints, and DOM sink signals are evaluated separately so findings are easier to triage.
 
-- Tests GET and POST parameters discovered from the target.
-- Default mode tests one parameter per request so the vulnerable parameter is easier to identify.
-- Optional `--all-params` mode tests all query parameters together for a specific endpoint.
-- Smart payload selection runs high-priority payloads first.
-- Reflection context analysis for HTML text, attributes, script blocks, comments, raw/API responses, and other contexts.
-- Browser validation with Chromium or Playwright when available.
-- API evidence detection without automatically marking reflected API responses as confirmed XSS.
-- Full payload URL output for `[VALID]` and `[API]` findings to make manual retesting easier.
-- CSP analysis, WAF-like hints, JavaScript source review, and DOM sink analysis.
-- Parallel workers for discovered endpoints and parameters.
+## Highlights
+
+- Tests discovered GET and POST parameters.
+- Uses a `single-param` default mode so the vulnerable parameter is easier to identify.
+- Supports `--all-params` for endpoints that only react when parameters change together.
+- Runs high-priority payloads first through smart payload selection.
+- Analyzes reflection context in HTML text, attributes, script blocks, comments, raw responses, API responses, and related contexts.
+- Validates execution with Chromium or Playwright when available.
+- Detects API evidence without automatically calling reflected API responses confirmed XSS.
+- Prints full payload URLs for `[VALID]` and `[API]` findings to make manual retesting easier.
+- Includes CSP analysis, WAF-like hints, JavaScript source review, DOM sink analysis, and parallel workers.
 
 ## Responsible Use
 
@@ -46,7 +58,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-After installation, verify the command:
+Verify the command:
 
 ```bash
 xssentinel -h
@@ -60,61 +72,33 @@ export PATH="$HOME/.local/bin:$PATH"
 
 To make it permanent, add that line to your shell config, such as `~/.bashrc` or `~/.zshrc`.
 
-## Command Reference
+## Quick Start
 
-```bash
-xssentinel <url>
-xssentinel --all-params <url>
-xssentinel --stop-on-confirmed <url>
-xssentinel
-xssentinel -update
-xssentinel -restart
-xssentinel -h
-```
-
-| Command | Purpose |
-| --- | --- |
-| `xssentinel <url>` | Scan a target directly from the command line. |
-| `xssentinel` | Start interactive mode and prompt for a target URL. |
-| `xssentinel --all-params <url>` | Send the same payload to every query parameter in one request. |
-| `xssentinel --stop-on-confirmed <url>` | Stop the entire scan after the first confirmed finding. |
-| `xssentinel -update` | Fetch the latest XSSentinel release state and reinstall the runtime command. |
-| `xssentinel -restart` | Clean local cache and reinstall the runtime from the saved local source. Useful after local source edits. |
-| `xssentinel -h` | Show built-in help. |
-
-Important notes:
-
-- Use `xssentinel -update` when you want the latest available tool version installed.
-- Use `xssentinel -restart` after editing local source files and you want the installed `xssentinel` command to use those local changes.
-- `-restart` does not fetch remote updates; it refreshes the runtime from the saved local source path.
-
-## Usage Examples
-
-Scan a URL with one query parameter:
+Scan a target directly:
 
 ```bash
 xssentinel "https://target.test/search?q=test"
 ```
 
-Scan a URL with multiple parameters. By default, each parameter is tested separately:
+Scan multiple query parameters. By default, XSSentinel fuzzes one parameter per request:
 
 ```bash
-xssentinel "https://target.test/articles/search?query=test&keyword=test&key=test&menu=test&category=test"
+xssentinel "https://target.test/articles/search?query=test&keyword=test&category=test"
 ```
 
-Scan all query parameters together for the same endpoint:
+Send the same payload to all query parameters in one request:
 
 ```bash
-xssentinel --all-params "https://target.test/articles/search?query=test&keyword=test&key=test&menu=test&category=test"
+xssentinel --all-params "https://target.test/articles/search?query=test&keyword=test&category=test"
 ```
 
-Stop the whole scan after the first confirmed XSS:
+Stop the full scan after the first confirmed finding:
 
 ```bash
 xssentinel --stop-on-confirmed "https://target.test/search?q=test"
 ```
 
-Update the installed tool:
+Update the installed runtime:
 
 ```bash
 xssentinel -update
@@ -125,6 +109,24 @@ Refresh the installed runtime from local source:
 ```bash
 xssentinel -restart
 ```
+
+## Command Reference
+
+| Command | Purpose |
+| --- | --- |
+| `xssentinel <url>` | Scan a target directly from the command line. |
+| `xssentinel` | Start interactive mode and prompt for a target URL. |
+| `xssentinel --all-params <url>` | Send the same payload to every query parameter in one request. |
+| `xssentinel --stop-on-confirmed <url>` | Stop the entire scan after the first confirmed finding. |
+| `xssentinel -update` | Fetch the latest available tool state and reinstall the runtime command. |
+| `xssentinel -restart` | Clean local cache and reinstall the runtime from the saved local source. Useful after local source edits. |
+| `xssentinel -h` | Show built-in help. |
+
+Important notes:
+
+- Use `xssentinel -update` when you want the latest available tool version installed.
+- Use `xssentinel -restart` after editing local source files and you want the installed `xssentinel` command to use those local changes.
+- `-restart` does not fetch remote updates; it refreshes the runtime from the saved local source path.
 
 ## Parameter Modes
 
@@ -144,27 +146,17 @@ https://target.test/search?query=test&keyword=PAYLOAD&category=test
 https://target.test/search?query=test&keyword=test&category=PAYLOAD
 ```
 
-This mode is usually the best default because:
-
-- It identifies which parameter is responsible for the signal.
-- It gives cleaner evidence and cleaner payload URLs.
-- It reduces noise on endpoints that reject requests when many values change at once.
+This mode is usually the best default because it identifies the responsible parameter, produces cleaner evidence, and reduces noise on endpoints that reject requests when many values change at once.
 
 ### Optional: `all-params`
 
-Enable this mode with `--all-params`. All query parameters receive the same payload in one request.
-
-Example:
+Enable this mode with `--all-params`. All query parameters receive the same payload in one request:
 
 ```text
 https://target.test/search?query=PAYLOAD&keyword=PAYLOAD&category=PAYLOAD
 ```
 
-Use this mode when:
-
-- The endpoint only reacts when multiple parameters change together.
-- You want to check whether a parameter combination reaches a sink.
-- You want quick coverage for a specific endpoint.
+Use this mode when an endpoint only reacts to parameter combinations or when you want quick coverage for a specific endpoint.
 
 At scan startup, XSSentinel prints the active mode:
 
@@ -182,14 +174,12 @@ or:
 
 ## Result Classification
 
-XSSentinel does not treat every reflection as confirmed XSS. A result is classified from several evidence layers:
+XSSentinel does not treat every reflection as confirmed XSS. Results are classified from several evidence layers:
 
 - Whether the payload appears in the response.
-- Where the payload appears: HTML text, attribute, script, raw/API response, or another context.
+- Where the payload appears, such as HTML text, attributes, script, raw/API responses, or another context.
 - Whether the payload actually executes in a browser.
 - Whether the response is an API/download response that delivers payload content but does not directly execute it.
-
-Result markers:
 
 | Marker | Status | Meaning |
 | --- | --- | --- |
@@ -204,15 +194,15 @@ Accuracy rules:
 
 - `[VALID]` is reserved for confirmed execution evidence.
 - API responses that only reflect the payload are not automatically marked valid.
-- `[API]` is still important because API data can become XSS when a frontend renders it unsafely.
-- When `[API]` appears, XSSentinel prints the full URL with the payload so it can be retested in a browser, proxy, or frontend sink.
+- `[API]` matters because API data can become XSS when a frontend renders it unsafely.
+- When `[API]` appears, XSSentinel prints the full URL with the payload for browser, proxy, or frontend sink retesting.
 
-## Important Output
+## Output Examples
 
 Example `[API]` result:
 
 ```text
-[API  ] #0008 agent=01/01 GET HTTP=200 API_REFLECTED API response reflects payload; browser confirmation required eviden...
+[API  ] #0008 agent=01/01 GET HTTP=200 API_REFLECTED API response reflects payload; browser confirmation required
   url: https://target.test/api/search?q=%3Csvg%20onload%3Dalert%281%29%3E
   payload: <svg onload=alert(1)>
 ```
@@ -289,12 +279,7 @@ Example API endpoint:
 xssentinel "https://target.test/api/search?q=test"
 ```
 
-When `[API]` appears, continue manual validation:
-
-- Open the printed payload URL.
-- Check the response body and content type.
-- Find the frontend page that consumes the endpoint.
-- Confirm whether the response is inserted into the DOM as active HTML or only displayed as safe text.
+When `[API]` appears, continue manual validation by opening the printed payload URL, checking the response body and content type, finding the frontend consumer, and confirming whether the response is inserted as active HTML or safe text.
 
 ## Browser Validation
 
@@ -354,11 +339,6 @@ Add `~/.local/bin` to your `PATH`:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
-```
-
-Then check:
-
-```bash
 xssentinel -h
 ```
 
