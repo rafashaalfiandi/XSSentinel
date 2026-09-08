@@ -173,6 +173,14 @@ python3 -m playwright install chromium
 
 XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiandi) and welcomes security researchers, Python developers, QA engineers, and documentation contributors.
 
+<p align="left">
+  <a href="https://github.com/fahmiammar" title="Fahmi Ammar">
+    <img src="https://github.com/fahmiammar.png?size=120" alt="Fahmi Ammar" width="88" height="88" style="border-radius: 50%;">
+  </a>
+</p>
+
+**Collaborator:** [Fahmi Ammar](https://github.com/fahmiammar)
+
 Useful ways to collaborate:
 
 - Report reproducible bugs with the target behavior, command, environment, and expected result.
