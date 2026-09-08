@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  A focused open-source <strong>cross-site scripting (XSS) scanner</strong> for reflected XSS,
+  DOM XSS triage, parameter fuzzing, and browser-based confirmation.
+</p>
+
+<p>
   <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
   <img alt="Platform" src="https://img.shields.io/badge/Platform-Linux-555555?style=for-the-badge">
   <img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-2f7d32?style=for-the-badge">
@@ -18,6 +23,20 @@
 </p>
 
 </div>
+
+> XSSentinel is an open-source security testing tool for authorized penetration testing, bug bounty reconnaissance, and defensive web application assessments.
+
+## Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Browser Validation](#browser-validation)
+- [Responsible Use](#responsible-use)
+- [Collaborators and Contributing](#collaborators-and-contributing)
+- [License](#license)
 
 ## Demo
 
@@ -29,9 +48,11 @@
 
 ## Overview
 
-XSSentinel helps testers review reflected XSS, DOM XSS risk, and API responses that reflect input. It is designed for authorized security testing and gives readable evidence so findings are easier to confirm manually.
+XSSentinel is a Python-based command-line XSS scanner that helps security testers find and triage reflected cross-site scripting, DOM XSS risk, and API responses that reflect input. It fuzzes URL and form parameters, analyzes reflection contexts, and uses Chromium or Playwright to verify browser-side execution when available.
 
 XSSentinel does not mark every reflection as confirmed XSS. It separates confirmed browser execution from lower-confidence reflection, API, and risk signals.
+
+The project is built for readable terminal workflows: start with one URL, inspect the evidence, reproduce the result manually, and report only authorized findings.
 
 ## Features
 
@@ -42,6 +63,20 @@ XSSentinel does not mark every reflection as confirmed XSS. It separates confirm
 - Shows practical finding markers: `[VALID]`, `[API]`, `[RISK]`, `[LOW]`, `[NO]`, and `[SKIP]`.
 - Uses Chromium or Playwright when available for browser confirmation.
 - Provides CSP, WAF-like, API, and DOM-risk hints.
+- Keeps evidence tied to the tested payload to reduce false-positive browser confirmations.
+- Works well for security researchers, bug bounty testers, QA teams, and developers reviewing web input handling.
+
+## Quick Start
+
+```bash
+git clone https://github.com/rafashaalfiandi/XSSentinel.git
+cd XSSentinel
+chmod +x install.sh
+./install.sh
+xssentinel "https://target.test/search?q=test"
+```
+
+Only scan targets that you own or are explicitly authorized to test.
 
 ## Responsible Use
 
@@ -133,6 +168,29 @@ Or install Playwright support:
 python3 -m pip install playwright
 python3 -m playwright install chromium
 ```
+
+## Collaborators and Contributing
+
+XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiandi) and welcomes security researchers, Python developers, QA engineers, and documentation contributors.
+
+Useful ways to collaborate:
+
+- Report reproducible bugs with the target behavior, command, environment, and expected result.
+- Add focused tests for scanner decisions, payload parsing, browser evidence, and false-positive prevention.
+- Improve documentation, examples, payload context handling, and platform support.
+- Open a pull request with a small, clearly described change.
+
+Please read [SECURITY.md](SECURITY.md) before reporting a security issue. Do not include private target data, credentials, or unauthorized scan results in public issues.
+
+### Suggested Contribution Flow
+
+```bash
+git checkout -b improve-xss-detection
+python -m unittest discover -s tests -p "test_*.py"
+git diff --check
+```
+
+Keep changes focused, add a regression test for bug fixes, and explain how the result was verified.
 
 ## Troubleshooting
 
