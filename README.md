@@ -39,6 +39,7 @@
 - [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Upgrading Legacy Installations](#upgrading-legacy-installations)
 - [Browser Validation](#browser-validation)
 - [Support the Project](#support-the-project)
 - [Responsible Use](#responsible-use)
@@ -155,6 +156,23 @@ Update the installed tool:
 ```bash
 xssentinel -update
 ```
+
+## Upgrading Legacy Installations
+
+Older XSSentinel releases expected the payload catalogs in the repository root. Current releases keep them inside `xssentinel_core/manifest/payloads/` and no longer install payload files at the runtime root.
+
+Because an older updater runs before the new updater is installed, users upgrading from a legacy release may need this one-time migration:
+
+```bash
+cd ~/.local/share/xssentinel-source
+git pull --ff-only origin main
+rm -f xss-payloads.txt smart-selected-180-payloads.txt
+bash ./install.sh
+hash -r
+xssentinel -update
+```
+
+After this migration, future `xssentinel -update` commands use the new updater and do not require payload files in the root directory.
 
 Show help:
 
