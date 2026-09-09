@@ -9,10 +9,9 @@ BIN_PATH="${BIN_DIR}/${APP_NAME}"
 
 mkdir -p "${INSTALL_DIR}" "${BIN_DIR}"
 rm -f "${INSTALL_DIR}/xss_fuzz_scanner.py"
+rm -f "${INSTALL_DIR}/xss-payloads.txt" "${INSTALL_DIR}/smart-selected-180-payloads.txt"
 
 cp -f "${SOURCE_DIR}/main.py" "${INSTALL_DIR}/main.py"
-cp -f "${SOURCE_DIR}/xss-payloads.txt" "${INSTALL_DIR}/xss-payloads.txt"
-cp -f "${SOURCE_DIR}/smart-selected-180-payloads.txt" "${INSTALL_DIR}/smart-selected-180-payloads.txt"
 cp -f "${SOURCE_DIR}/useragents.txt" "${INSTALL_DIR}/useragents.txt"
 printf '%s\n' "${SOURCE_DIR}" > "${INSTALL_DIR}/.source-dir"
 if [[ -d "${SOURCE_DIR}/xssentinel_core" ]]; then
