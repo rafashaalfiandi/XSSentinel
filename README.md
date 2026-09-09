@@ -22,6 +22,11 @@
   <img alt="Use" src="https://img.shields.io/badge/Use-Authorized%20Testing%20Only-d46a6a?style=for-the-badge">
 </p>
 
+<p>
+  <a href="https://github.com/rafashaalfiandi/XSSentinel/issues"><img alt="Issues and feedback" src="https://img.shields.io/badge/Contribute-Issues%20%26%20PRs-1f6feb?style=flat-square&logo=github&logoColor=white"></a>
+  <a href="https://github.com/rafashaalfiandi/XSSentinel"><img alt="Source code" src="https://img.shields.io/badge/Source-Open%20Source-24292f?style=flat-square&logo=github&logoColor=white"></a>
+</p>
+
 </div>
 
 > XSSentinel is an open-source security testing tool for authorized penetration testing, bug bounty reconnaissance, and defensive web application assessments.
@@ -29,11 +34,13 @@
 ## Contents
 
 - [Overview](#overview)
+- [Why XSSentinel](#why-xssentinel)
 - [Features](#features)
 - [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Browser Validation](#browser-validation)
+- [Support the Project](#support-the-project)
 - [Responsible Use](#responsible-use)
 - [Collaborators and Contributing](#collaborators-and-contributing)
 - [License](#license)
@@ -53,6 +60,20 @@ XSSentinel is a Python-based command-line XSS scanner that helps security tester
 XSSentinel does not mark every reflection as confirmed XSS. It separates confirmed browser execution from lower-confidence reflection, API, and risk signals.
 
 The project is built for readable terminal workflows: start with one URL, inspect the evidence, reproduce the result manually, and report only authorized findings.
+
+## Why XSSentinel
+
+XSSentinel is designed for security testers who need useful evidence instead of a noisy payload dump. It combines parameter discovery, context-aware payload prioritization, reflection analysis, API evidence, and optional browser confirmation in one focused CLI workflow.
+
+It is useful for:
+
+- Reflected XSS testing in query strings, forms, and JSON request bodies.
+- DOM XSS triage and browser-based confirmation.
+- Bug bounty reconnaissance on authorized targets.
+- QA regression checks for input encoding and output sanitization.
+- Developers learning where untrusted input reaches an HTML or JavaScript context.
+
+The project aims to be fast to try, easy to inspect, and practical to extend with tests and plugins.
 
 ## Features
 
@@ -168,6 +189,24 @@ Or install Playwright support:
 python3 -m pip install playwright
 python3 -m playwright install chromium
 ```
+
+## Support the Project
+
+If XSSentinel helps with research, QA, or defensive security work, a coffee helps keep maintenance, testing, and documentation moving.
+
+<p>
+  <a href="https://etherscan.io/address/0xd1915d2D117aA1b8C832c4aA6DF1dD4D8E336Ff9"><img alt="Ethereum donation address" src="https://img.shields.io/badge/Donate-Ethereum-627eea?style=for-the-badge&logo=ethereum&logoColor=white"></a>
+  <a href="https://www.blockchain.com/explorer/addresses/btc/1336ujHfSXmkGdtP1nDKxfx6ZPh75xDRPp"><img alt="Bitcoin donation address" src="https://img.shields.io/badge/Donate-Bitcoin-f7931a?style=for-the-badge&logo=bitcoin&logoColor=white"></a>
+</p>
+
+### Donation Addresses
+
+| Network | Address |
+| --- | --- |
+| Ethereum (ETH) | `0xd1915d2D117aA1b8C832c4aA6DF1dD4D8E336Ff9` |
+| Bitcoin (BTC) | `1336ujHfSXmkGdtP1nDKxfx6ZPh75xDRPp` |
+
+Always verify the address and network before sending. Never send assets from an unsupported network or exchange format.
 
 ## Collaborators and Contributing
 
