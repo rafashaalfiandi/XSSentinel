@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="xssentinel_core/manifest/assets/thumbanail.pn" alt="XSSentinel" width="760">
+<img src="xssentinel_core/manifest/assets/thumbanail.png" alt="XSSentinel" width="760">
 
 <br><br>
 
