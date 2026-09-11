@@ -45,6 +45,7 @@
 - [Responsible Use](#responsible-use)
 - [Collaborators and Contributing](#collaborators-and-contributing)
 - [License](#license)
+- [Repository Resources](#repository-resources)
 
 ## Demo
 
@@ -293,3 +294,10 @@ Large targets and many discovered inputs can take longer. Start with a specific 
 ## License
 
 XSSentinel is released under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+
+## Repository Resources
+
+- [README](README.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Apache License 2.0](LICENSE)
+- [Security](SECURITY.md)
