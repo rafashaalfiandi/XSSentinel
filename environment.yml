@@ -1,0 +1,7 @@
+name: xssentinel
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytest>=8.0
+  - flake8>=7.0
