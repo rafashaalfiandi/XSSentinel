@@ -5,6 +5,8 @@ interfaces used by the runner. Callers can inject a `ScanServices` instance to
 replace individual subsystems without changing the public CLI.
 """
 
+# Updated by ell GITHUB: https://github.com/ruyynn
+
 from __future__ import annotations
 
 import argparse
@@ -26,6 +28,7 @@ from .interfaces import (
 from .models import HttpResult, ScanTarget, TargetIntelligence
 from .payloads import infer_target_contexts, select_payload_batches
 from .plugins import ExtensionRegistry, LifecycleManager, configure_plugins
+from .fileinput import file_scan_targets
 from .targets import make_scan_targets
 
 
@@ -47,9 +50,12 @@ class DefaultHttpTransport:
 
 
 class DefaultTargetDiscovery:
-    """Default target discovery backed by `targets.make_scan_targets`."""
+    """Default target discovery backed by `targets.make_scan_targets` and file inputs."""
 
     def discover(self, args: argparse.Namespace, user_agent: str) -> list[ScanTarget]:
+        file_targets = file_scan_targets(args)
+        if file_targets is not None:
+            return file_targets
         return make_scan_targets(args, user_agent)
 
 
