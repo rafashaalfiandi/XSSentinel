@@ -1,10 +1,13 @@
 """Command-line entrypoint for XSSentinel."""
 
+# Updated by ell GITHUB: https://github.com/ruyynn
+
 from .settings import *
 from .targets import *
 from .browser import *
 from .runner import *
 from .output import *
+from .fileinput import MAX_FUZZ_FIELDS
 from .maintenance import print_banner, run_restart, run_update
 
 def parse_extra_headers(header_values: list[str], cookie: str | None) -> dict[str, str]:
@@ -27,6 +30,8 @@ def print_help() -> None:
     print("  xssentinel <url>")
     print("  xssentinel --all-params <url>")
     print("  xssentinel --stop-on-confirmed <url>")
+    print("  xssentinel -f <file>")
+    print("  xssentinel F <request-file>")
     print("  xssentinel")
     print("  xssentinel -update")
     print("  xssentinel -restart")
@@ -36,6 +41,9 @@ def print_help() -> None:
     print("  <url>       Scan a target URL. If no URL is provided, the tool prompts interactively.")
     print("  --all-params  Fuzz all query parameters in one request for the target URL.")
     print("  --stop-on-confirmed  Stop once the first confirmed result is found.")
+    print("  -f, --file  Load targets from a file. Each line is a URL that already has parameters.")
+    print("  F           Load a raw HTTP request file, then test its GET or POST parameters.")
+    print("  --max-fields N  Override the default 8-field cap per form or JSON body in file modes.")
     print("  -update     Clone/pull the latest XSSentinel source from git, then install the runtime.")
     print("  -restart    Clean cache and reinstall the runtime from the saved/local source project.")
     print("  -h, -help   Show this help information.")
@@ -46,10 +54,14 @@ def print_help() -> None:
     print("  --stop-on-confirmed keeps the old fast-stop behavior after the first confirmed result.")
     print("  By default, confirmed payloads stop the current target but scanning continues on other targets.")
     print("  Discovered parameters are tested in parallel with an automatic worker pool.")
+    print("  File modes (-f, F) test the parameters already present in the file instead of crawling, POST first.")
+    print("  File modes fuzz at most 8 fields per form or JSON body; --max-fields N raises that cap.")
     print()
     print("Examples:")
     print("  xssentinel https://site.test/search?q=test&id=1")
     print("  xssentinel --all-params https://site.test/search?q=test&id=1")
+    print("  xssentinel -f urls.txt")
+    print("  xssentinel F request.txt")
     print("  xssentinel -update")
     print("  xssentinel -restart")
 
@@ -62,6 +74,20 @@ def maintenance_command(value: str) -> str | None:
     if lowered in {"-restart", "--restart", "restart"}:
         return "restart"
     return None
+
+def extract_file_inputs(cleaned_args: list[str]) -> tuple[str | None, str | None]:
+    if not cleaned_args:
+        return None, None
+    first = cleaned_args[0]
+    if first == "F":
+        if len(cleaned_args) != 2:
+            raise SystemExit("F expects exactly one request file path, for example: xssentinel F request.txt")
+        return None, cleaned_args[1]
+    if first in {"-f", "--file", "f"}:
+        if len(cleaned_args) != 2:
+            raise SystemExit("-f/--file expects exactly one URL list file path, for example: xssentinel -f urls.txt")
+        return cleaned_args[1], None
+    return None, None
 
 def parse_args() -> argparse.Namespace:
     if len(sys.argv) > 1 and maintenance_command(sys.argv[1]) == "help":
@@ -87,20 +113,40 @@ def parse_args() -> argparse.Namespace:
     raw_args = sys.argv[1:] if len(sys.argv) > 1 else []
     all_params = False
     stop_on_confirmed = False
+    max_fields = MAX_FUZZ_FIELDS
     cleaned_args: list[str] = []
-    for item in raw_args:
+    index = 0
+    while index < len(raw_args):
+        item = raw_args[index]
         if item in {"--all-params", "--all-query-params", "--fuzz-all-params"}:
             all_params = True
+            index += 1
             continue
         if item in {"--stop-on-confirmed", "--stop-after-confirmed"}:
             stop_on_confirmed = True
+            index += 1
+            continue
+        if item == "--max-fields" or item.startswith("--max-fields="):
+            separator, inline = item.partition("=")[1:]
+            if not separator:
+                index += 1
+                inline = raw_args[index] if index < len(raw_args) else ""
+            if not inline.lstrip("-").isdigit():
+                raise SystemExit("--max-fields expects a positive integer, for example: --max-fields 12")
+            max_fields = int(inline)
+            index += 1
             continue
         cleaned_args.append(item)
+        index += 1
 
-    raw_target = " ".join(cleaned_args).strip() if cleaned_args else ""
-    if not raw_target:
-        raw_target = input("URL > ").strip()
-    method, url, data = parse_target_line(raw_target)
+    url_file, request_file = extract_file_inputs(cleaned_args)
+    if url_file or request_file:
+        method, url, data = "AUTO", "", None
+    else:
+        raw_target = " ".join(cleaned_args).strip() if cleaned_args else ""
+        if not raw_target:
+            raw_target = input("URL > ").strip()
+        method, url, data = parse_target_line(raw_target)
 
     args = argparse.Namespace(
         url=url,
@@ -123,9 +169,14 @@ def parse_args() -> argparse.Namespace:
         stop_on_confirmed=stop_on_confirmed,
         i_am_authorized=True,
         all_params=all_params,
+        max_fields=max_fields,
         help_only=False,
         maintenance_command=None,
+        url_file=url_file,
+        request_file=request_file,
     )
+    if url_file or request_file:
+        return args
     args.url = normalize_input_url(args.url)
     return args
 
