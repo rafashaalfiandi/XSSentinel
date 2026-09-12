@@ -1,0 +1,4 @@
+name=xssentinel
+command=xssentinel
+fingerprint=rafashacodeid
+layout=core/runtime/engine/payloads/signatures/cache/state
