@@ -294,7 +294,7 @@ Always verify the address and network before sending. Never send assets from an 
 
 ## Contributing
 
-XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiandi), with contributions and review from [ruyynn](https://github.com/ruyynn). Contributions from security researchers, Python developers, QA engineers, and documentation contributors are welcome.
+XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiandi). Contributions from security researchers, Python developers, QA engineers, and documentation contributors are welcome.
 
 <p align="left">
   <a href="https://github.com/fahmiammar" title="Fahmi Ammar">
@@ -302,7 +302,7 @@ XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiand
   </a>
 </p>
 
-**Collaborator:** [Fahmi Ammar](https://github.com/fahmiammar)
+**Collaborators:** [Fahmi Ammar](https://github.com/fahmiammar) and [ruyynn](https://github.com/ruyynn)
 
 To contribute to this project, open an issue or pull request with a focused, reproducible improvement. Useful contributions include:
 
