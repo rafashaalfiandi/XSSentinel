@@ -1,1 +1,0 @@
-"""XSSentinel core package."""
