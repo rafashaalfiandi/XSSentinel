@@ -39,13 +39,13 @@
 - [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Google Colab](#google-colab)
 - [Upgrading Legacy Installations](#upgrading-legacy-installations)
 - [Browser Validation](#browser-validation)
 - [Support the Project](#support-the-project)
 - [Responsible Use](#responsible-use)
-- [Collaborators and Contributing](#collaborators-and-contributing)
+- [Contributing](#contributing)
 - [License](#license)
-- [Repository Resources](#repository-resources)
 
 ## Demo
 
@@ -128,35 +128,100 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ## Usage
 
-Scan a target URL:
+### Basic scan
 
 ```bash
 xssentinel "https://target.test/search?q=test"
 ```
 
-Scan a URL with multiple parameters:
+If no URL is supplied, XSSentinel opens an interactive prompt. Only scan targets that you own or are explicitly authorized to test.
 
-```bash
-xssentinel "https://target.test/search?q=test&category=test"
-```
+### Scan modes
 
-Send each test to all parameters at once:
+Test all query parameters in one request:
 
 ```bash
 xssentinel --all-params "https://target.test/search?q=test&category=test"
 ```
 
-Stop after the first confirmed finding:
+Stop after the first confirmed browser execution:
 
 ```bash
 xssentinel --stop-on-confirmed "https://target.test/search?q=test"
 ```
 
-Update the installed tool:
+Load URLs from a file. Each line should contain a URL with parameters:
+
+```bash
+xssentinel -f urls.txt
+```
+
+Load a raw HTTP request and test its GET or POST parameters:
+
+```bash
+xssentinel -r request.txt
+```
+
+Raise the default eight-field limit for form or JSON-body tests:
+
+```bash
+xssentinel --max-fields 12 -r request.txt
+```
+
+Show the complete command reference:
+
+```bash
+xssentinel -h
+```
+
+Update or reinstall the runtime:
 
 ```bash
 xssentinel -update
+xssentinel -restart
 ```
+
+### CLI reference
+
+| Command or option | Description |
+| --- | --- |
+| `xssentinel <url>` | Scan a target URL. Prompts for a URL when omitted. |
+| `--all-params` | Send each payload to all query parameters in one request. |
+| `--stop-on-confirmed` | Stop after the first confirmed result. |
+| `-f`, `--file` | Load target URLs from a file. |
+| `-r`, `--request` | Load a raw HTTP request file. |
+| `--max-fields N` | Override the default eight-field cap. |
+| `-update` | Pull the latest source and reinstall the runtime. |
+| `-restart` | Clean the cache and reinstall from the saved source project. |
+| `-h`, `-help` | Show help and examples. |
+
+By default, XSSentinel tests one parameter per request for clearer evidence, tests discovered parameters in parallel, and continues with other targets after a confirmed result. File modes use the parameters already present in the file and test POST data first.
+
+## Google Colab
+
+XSSentinel can be used in a Google Colab runtime for temporary, authorized testing. Run the following cells in order:
+
+```bash
+!git clone https://github.com/rafashaalfiandi/XSSentinel.git
+%cd XSSentinel
+!chmod +x install.sh
+!./install.sh
+```
+
+Install Chromium for browser-based confirmation:
+
+```bash
+!sudo apt-get update -qq
+!sudo apt-get install -y -qq chromium
+```
+
+Run a scan against an authorized target:
+
+```bash
+!$HOME/.local/bin/xssentinel "https://target.test/search?q=test"
+```
+
+Colab runtimes are temporary. Re-run the installation cells after the runtime is reset, and never place credentials, private target data, or sensitive request files in a public notebook.
 
 ## Upgrading Legacy Installations
 
@@ -227,9 +292,9 @@ If XSSentinel helps with research, QA, or defensive security work, a coffee help
 
 Always verify the address and network before sending. Never send assets from an unsupported network or exchange format.
 
-## Collaborators and Contributing
+## Contributing
 
-XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiandi) and welcomes security researchers, Python developers, QA engineers, and documentation contributors.
+XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiandi), with contributions and review from [ruyynn](https://github.com/ruyynn). Contributions from security researchers, Python developers, QA engineers, and documentation contributors are welcome.
 
 <p align="left">
   <a href="https://github.com/fahmiammar" title="Fahmi Ammar">
@@ -239,7 +304,7 @@ XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiand
 
 **Collaborator:** [Fahmi Ammar](https://github.com/fahmiammar)
 
-Useful ways to collaborate:
+To contribute to this project, open an issue or pull request with a focused, reproducible improvement. Useful contributions include:
 
 - Report reproducible bugs with the target behavior, command, environment, and expected result.
 - Add focused tests for scanner decisions, payload parsing, browser evidence, and false-positive prevention.
@@ -248,7 +313,7 @@ Useful ways to collaborate:
 
 Please read [SECURITY.md](SECURITY.md) before reporting a security issue. Do not include private target data, credentials, or unauthorized scan results in public issues.
 
-### Suggested Contribution Flow
+### Suggested contribution flow
 
 ```bash
 git checkout -b improve-xss-detection
@@ -294,10 +359,3 @@ Large targets and many discovered inputs can take longer. Start with a specific 
 ## License
 
 XSSentinel is released under the Apache License 2.0. See [LICENSE](LICENSE) for details.
-
-## Repository Resources
-
-- [README](README.md)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Apache License 2.0](LICENSE)
-- [Security](SECURITY.md)
