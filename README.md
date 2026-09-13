@@ -39,7 +39,6 @@
 - [Quick Start](#quick-start)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Google Colab](#google-colab)
 - [Upgrading Legacy Installations](#upgrading-legacy-installations)
 - [Browser Validation](#browser-validation)
 - [Support the Project](#support-the-project)
@@ -196,32 +195,6 @@ xssentinel -restart
 | `-h`, `-help` | Show help and examples. |
 
 By default, XSSentinel tests one parameter per request for clearer evidence, tests discovered parameters in parallel, and continues with other targets after a confirmed result. File modes use the parameters already present in the file and test POST data first.
-
-## Google Colab
-
-XSSentinel can be used in a Google Colab runtime for temporary, authorized testing. Run the following cells in order:
-
-```bash
-!git clone https://github.com/rafashaalfiandi/XSSentinel.git
-%cd XSSentinel
-!chmod +x install.sh
-!./install.sh
-```
-
-Install Chromium for browser-based confirmation:
-
-```bash
-!sudo apt-get update -qq
-!sudo apt-get install -y -qq chromium
-```
-
-Run a scan against an authorized target:
-
-```bash
-!$HOME/.local/bin/xssentinel "https://target.test/search?q=test"
-```
-
-Colab runtimes are temporary. Re-run the installation cells after the runtime is reset, and never place credentials, private target data, or sensitive request files in a public notebook.
 
 ## Upgrading Legacy Installations
 
