@@ -300,6 +300,9 @@ XSSentinel is maintained by [Rafasha Alfiandi](https://github.com/rafashaalfiand
   <a href="https://github.com/fahmiammar" title="Fahmi Ammar">
     <img src="https://github.com/fahmiammar.png?size=120" alt="Fahmi Ammar" width="88" height="88" style="border-radius: 50%;">
   </a>
+  <a href="https://github.com/ruyynn" title="ruyynn">
+    <img src="https://github.com/ruyynn.png?size=120" alt="ruyynn" width="88" height="88" style="border-radius: 50%;">
+  </a>
 </p>
 
 **Collaborators:** [Fahmi Ammar](https://github.com/fahmiammar) and [ruyynn](https://github.com/ruyynn)
