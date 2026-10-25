@@ -1,6 +1,0 @@
-# Development and test tooling.
-# Runtime scanning uses the Python standard library by default.
-pytest>=8.0
-
-# Optional browser validation support:
-# playwright>=1.45
