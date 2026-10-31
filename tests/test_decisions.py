@@ -106,7 +106,9 @@ class DecisionTests(unittest.TestCase):
             for evidence in decision.finding.diagnostics.evidence
         ))
 
-    def test_catalog_payload_seven_reflection_without_execution_is_not_valid(self) -> None:
+    # fix payload #7: nama test lama bilang "not valid", itu justru bug yang dilaporin 30/10.
+    # breakout attribute sekarang wajib dianggap REFLECTED_RISK walau tanpa popup - update by Ruyynn (github.com/ruyynn)
+    def test_catalog_payload_seven_reflection_without_execution_stays_reflected_risk(self) -> None:
         payload = load_lines(PAYLOAD_FILE)[6]
         target = ScanTarget(
             "GET",
@@ -138,8 +140,62 @@ class DecisionTests(unittest.TestCase):
 
         self.assertTrue(decision.finding.reflected)
         self.assertFalse(decision.finding.browser_confirmed)
-        self.assertEqual(decision.finding.status, "REFLECTED_LOW")
+        # status lama REFLECTED_LOW = bug payload #7, sekarang kehitung RISK - update by Ruyynn (github.com/ruyynn)
+        self.assertEqual(decision.finding.status, "REFLECTED_RISK")
         self.assertNotEqual(decision.finding.xti_status, "CONFIRMED_XSS")
+
+    # regression test payload #7 biar gak keulang - update by Ruyynn (github.com/ruyynn)
+    def test_raw_attribute_breakout_keeps_active_reflection_signal(self) -> None:
+        target = ScanTarget("GET", "https://example.test/en/search?search=FUZZ", None, "application/x-www-form-urlencoded", ["query:search"])
+        payload = '"onclick=prompt(8)><svg/onload=prompt(8)>"@x.y'
+        # The payload is reflected unescaped inside value="...", so it breaks the
+        # tag apart and no single parsed attribute contains the full payload.
+        body = '<input type="text" class="form-control" value=""onclick=prompt(8)><svg/onload=prompt(8)>"@x.y" name="search">'
+
+        decision = evaluate_scan_attempt(
+            target,
+            payload,
+            "https://example.test/en/search?search=%22onclick%3Dprompt%288%29%3E%3Csvg%2Fonload%3Dprompt%288%29%3E%22%40x.y",
+            None,
+            HttpResult(200, body, {"Content-Type": "text/html"}),
+            scanner_args(),
+            "unit-test-agent",
+            None,
+            "smart",
+            7,
+            AttemptState(),
+            lambda *_args: (False, "no alert/confirm/prompt popup detected"),
+        )
+
+        self.assertTrue(
+            any(item.context == "active-html" and item.severity >= 75 for item in decision.finding.reflections)
+        )
+        self.assertEqual(decision.finding.status, "REFLECTED_RISK")
+
+    def test_parser_visible_attribute_reflection_keeps_legacy_low_status(self) -> None:
+        target = ScanTarget("GET", "https://example.test/en/search?search=FUZZ", None, "application/x-www-form-urlencoded", ["query:search"])
+        payload = "%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E"
+        # The escaped angle brackets keep the payload inside one parsed
+        # attribute value, so the parser sees it and the status is not inflated.
+        body = '<input type="text" class="form-control" value="%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E" name="search">'
+
+        decision = evaluate_scan_attempt(
+            target,
+            payload,
+            "https://example.test/en/search?search=%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E",
+            None,
+            HttpResult(200, body, {"Content-Type": "text/html"}),
+            scanner_args(),
+            "unit-test-agent",
+            None,
+            "smart",
+            5,
+            AttemptState(),
+            lambda *_args: (False, "no alert/confirm/prompt popup detected"),
+        )
+
+        self.assertEqual(decision.finding.status, "REFLECTED_LOW")
+        self.assertTrue(any(item.context == "html-attribute" for item in decision.finding.reflections))
 
     def test_catalog_prompt_event_without_source_confirms_when_attempt_and_context_match(self) -> None:
         payload = load_lines(PAYLOAD_FILE)[6]
@@ -253,7 +309,8 @@ class DecisionTests(unittest.TestCase):
 
         self.assertFalse(decision.finding.browser_confirmed)
         self.assertIn(f"attempt-popup:{stale_attempt_id}:prompt:OA", decision.finding.browser_evidence)
-        self.assertEqual(decision.finding.status, "REFLECTED_LOW")
+        # popup dari attempt lain gak bikin CONFIRMED, tapi breakout tetep RISK - update by Ruyynn (github.com/ruyynn)
+        self.assertEqual(decision.finding.status, "REFLECTED_RISK")
         self.assertNotEqual(decision.finding.xti_status, "CONFIRMED_XSS")
 
     def test_dynamic_popup_argument_is_confirmed_for_current_attempt(self) -> None:

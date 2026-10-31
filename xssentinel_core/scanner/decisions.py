@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -21,7 +22,7 @@ from .browser import browser_run_context, is_loopback_url
 from .http_client import normalize_request_error
 from .models import BrowserValidation, EvidenceItem, Finding, HttpResult, Reflection, ResponseContext, ScanDiagnostics, ScanTarget, TargetIntelligence
 from .pipeline import browser_validation_budget, classify_response, is_network_error, response_evidence_items, should_verify_with_browser
-from .reflection import api_reflection_evidence, delivered_payload_evidence
+from .reflection import active_reflection, api_reflection_evidence, delivered_payload_evidence
 from .scoring import confidence_score, finding_evidence_bundle
 from .trace_intelligence import (
     analyze_transformations,
@@ -140,7 +141,19 @@ def skip_streak_detail(http_status: int | None, error: str | None, streak: int) 
 def response_context_for(result: HttpResult, payload: str, test_url: str) -> ResponseContext:
     if not result.body:
         return ResponseContext("", "empty", [], [])
-    return analyze_response_context(result.body, payload, result.headers, test_url)
+    context = analyze_response_context(result.body, payload, result.headers, test_url)
+    # Payloads that break out of an attribute split the response across tag
+    # boundaries, so the HTML parser ends up with no context evidence beyond
+    # the raw-body fallback. In that blind case, consult the active-reflection
+    # check on the unescaped body so raw breakouts keep the same active signal
+    # that context probing (analyze_reflection) already applies.
+    # fix payload #7: breakout di attribute kelewat valid,
+    # tambah fallback active_reflection biar kehitung - update by Ruyynn (github.com/ruyynn)
+    if not context.reflections or all(item.context == "raw-response" for item in context.reflections):
+        active = active_reflection(payload, html.unescape(result.body))
+        if active:
+            context.reflections.append(active)
+    return context
 
 
 def update_rejection_state(
