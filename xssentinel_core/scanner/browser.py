@@ -870,6 +870,13 @@ def confirm_with_browser(
     if not is_url_in_scope(url):
         return False, "browser navigation blocked by configured scope policy"
     config = browser_runtime_config()
+    # fix: HTTP timeout (5s) gak cukup buat launch chromium + load halaman lambat + nunggu popup,
+    # validator browser punya waktu sendiri dari runtime windows - update by Ruyynn (github.com/ruyynn)
+    browser_floor_s = (
+        config.launch_timeout_s + config.load_window_s
+        + config.trigger_window_s + config.followup_rounds * config.followup_delay_s
+    )
+    timeout_ms = int(max(timeout_ms / 1000, browser_floor_s) * 1000)
     request_governor = BrowserRequestGovernor(config.max_http_requests, config.http_requests_per_second)
     confirmed, evidence = confirm_with_local_chromium(
         url,
