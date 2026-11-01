@@ -574,6 +574,7 @@ def _setup_cdp_page(
 
 def _collect_cdp_hits(cdp: CDPClient, timeout: float, config: BrowserRuntimeConfig) -> list[str]:
     hits: list[str] = []
+    deadline = _now() + timeout
     load_events = collect_cdp_events(cdp, seconds=min(timeout, config.load_window_s))
     hits.extend(cdp_dialog_hits(load_events))
     trigger_events = cdp_call_collect(
@@ -628,6 +629,16 @@ def _collect_cdp_hits(cdp: CDPClient, timeout: float, config: BrowserRuntimeConf
             1.0,
         )
         hits.extend(cdp_dom_signal_hits(signal_events))
+    # fix: di situs lelet popup sering baru nyalain setelah semua window tetep
+    # kelar (load window + trigger + followup), dialog gak kebaca + verdict
+    # mentok "browser unconfirmed" padahal budget timeout masih sisa - sisain
+    # budget sisa buat tetep dengerin dialog sampe deadline beneran abis
+    # - update by Ruyynn (github.com/ruyynn)
+    while _now() < deadline and not hits:
+        idle_events = collect_cdp_events(cdp, seconds=_remaining(deadline, 0.5))
+        hits.extend(cdp_dialog_hits(idle_events))
+        if not idle_events:
+            time.sleep(min(0.05, _remaining(deadline, 0.05)))
     # Include dialogs observed while Page.navigate or a nested CDP command was
     # waiting for its response. Such events may not be in the latest call's
     # return value even though Chromium already dismissed them.
